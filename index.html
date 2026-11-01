@@ -1,0 +1,902 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Costa Rica · November</title>
+<meta name="description" content="Our Costa Rica journey, November 4 to 15: five stops, where we sleep, where we eat, what we do.">
+<meta name="theme-color" content="#0f2a20">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+:root{
+  --lime:#f3efe6; --paper:#fbf9f4; --ink:#151a17; --muted:#5f645d; --line:#d8d1c2;
+  --ivy:#0f2a20; --emerald:#1d4a38; --sapphire:#2d4fa0; --hydr:#8ea0d8; --hydr-soft:#e4e8f6;
+  --amber:#c8963c; --lamp:#f0c56e; --garnet:#8a2d36;
+  --serif:"Cormorant Garamond",Georgia,serif; --text:"EB Garamond",Georgia,serif;
+  --r:14px; --shadow:0 1px 2px rgba(21,26,23,.06),0 10px 30px rgba(21,26,23,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--lime);color:var(--ink);font:18px/1.55 var(--text);-webkit-font-smoothing:antialiased}
+a{color:var(--emerald)}
+h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;line-height:1.05;letter-spacing:.005em}
+button{font:inherit;color:inherit}
+.sc{font:600 12.5px/1 var(--text);letter-spacing:.18em;text-transform:uppercase}
+.it{font-family:var(--serif);font-style:italic}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.lattice{background-color:var(--lime);
+  background-image:linear-gradient(var(--ink) 2px,transparent 2px),linear-gradient(90deg,var(--ink) 2px,transparent 2px);
+  background-size:24px 24px;background-position:-1px -1px}
+.hidden{display:none!important}
+
+/* ===== gate ===== */
+#gate{position:fixed;inset:0;z-index:5000;display:grid;place-items:center;padding:20px;overflow:auto}
+.gate-arch{background:var(--paper);border:2px solid var(--ink);border-radius:240px 240px 6px 6px;padding:70px 34px 30px;max-width:460px;width:100%;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.25)}
+.gate-arch h1{font-size:54px}
+.gate-arch .it{font-size:21px;color:var(--muted);margin:4px 0 26px}
+.q{margin:18px 0 8px;color:var(--muted)}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opt{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:12px 10px;cursor:pointer;text-align:center;transition:all .15s}
+.opt b{display:block;font:600 22px var(--serif)}
+.opt small{color:var(--muted);font-size:14px;line-height:1.3;display:block;margin-top:2px}
+.opt[aria-pressed="true"]{border-color:var(--emerald);background:#eef3ef;box-shadow:inset 0 0 0 1px var(--emerald)}
+.enter{margin-top:24px;width:100%;border:0;background:var(--ivy);color:#fff;border-radius:999px;padding:15px;cursor:pointer;font:600 14px var(--text);letter-spacing:.2em;text-transform:uppercase}
+
+/* ===== top bar ===== */
+.topbar{position:sticky;top:0;z-index:1500;background:var(--ivy);color:#fff}
+.topbar .wrap{display:flex;align-items:center;gap:12px;height:56px}
+.brand{font:600 italic 26px var(--serif);white-space:nowrap}
+.brand small{font:500 14px var(--text);font-style:normal;opacity:.7;margin-left:8px;letter-spacing:.06em}
+.spacer{flex:1}
+.toggle{display:flex;background:rgba(255,255,255,.1);border-radius:999px;padding:3px}
+.toggle button{border:0;background:none;color:#fff;opacity:.75;padding:6px 13px;border-radius:999px;cursor:pointer;font:600 12px var(--text);letter-spacing:.14em;text-transform:uppercase}
+.toggle button[aria-pressed="true"]{background:var(--paper);color:var(--ivy);opacity:1}
+.devbtn{border:1px solid rgba(255,255,255,.3);background:none;color:#fff;border-radius:999px;padding:6px 11px;cursor:pointer;font:600 12px var(--text);letter-spacing:.12em;text-transform:uppercase}
+.trim{height:10px;background-size:10px 10px;background-image:linear-gradient(var(--ink) 1.5px,transparent 1.5px),linear-gradient(90deg,var(--ink) 1.5px,transparent 1.5px);background-color:var(--lime)}
+body.d-phone .brand small{display:none}
+body.d-phone .brand{font-size:22px}
+body.d-phone .topbar .wrap{gap:8px}
+body.d-phone .devbtn{padding:5px 9px;font-size:11px;letter-spacing:.08em}
+
+/* ===== buttons ===== */
+.btns{display:flex;flex-wrap:wrap;gap:8px}
+.btn{display:inline-flex;align-items:center;gap:7px;text-decoration:none;border:1.5px solid var(--ink);background:transparent;color:var(--ink);border-radius:999px;padding:8px 15px;cursor:pointer;font:600 12.5px var(--text);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.btn:hover{background:var(--ink);color:#fff}
+.btn.solid{background:var(--ivy);border-color:var(--ivy);color:#fff}
+.btn.solid:hover{background:var(--emerald)}
+.btn.soft{border-color:var(--line);background:#fff}
+.btn.soft:hover{border-color:var(--ink);background:#fff;color:var(--ink)}
+
+/* ===== SIMPLE ===== */
+.hero{position:relative;padding:34px 0 40px}
+.hero-grid{display:grid;grid-template-columns:1fr minmax(300px,440px) 1fr;align-items:end}
+.hero .panel{height:100%}
+.doorway{position:relative;aspect-ratio:3/4;border:3px solid var(--ink);border-radius:999px 999px 0 0;overflow:hidden;background:#222;box-shadow:0 0 0 10px var(--lime),0 0 0 12px var(--ink)}
+.doorway img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05) contrast(1.03)}
+.doorway::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(15,42,32,.75))}
+.doorway .cap{position:absolute;left:0;right:0;bottom:22px;text-align:center;color:#fff;z-index:2}
+.doorway .cap h1{font-size:62px;text-shadow:0 2px 20px rgba(0,0,0,.35)}
+.doorway .cap .it{font-size:21px;opacity:.95}
+.herotext{text-align:center;margin-top:30px;background:var(--lime);position:relative}
+.herotext .lede{font:500 italic 26px/1.3 var(--serif);max-width:620px;margin:0 auto 14px}
+.herotext .nowline{color:var(--muted);font-size:17px;margin-bottom:18px}
+.herotext .btns{justify-content:center}
+
+.doors{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:8px 0 10px}
+.door{display:block;text-decoration:none;color:var(--ink);text-align:center;background:var(--paper);border:1.5px solid var(--ink);border-radius:999px 999px 6px 6px;padding:30px 8px 14px;transition:transform .15s}
+.door:hover{transform:translateY(-3px)}
+.door .num{font:600 italic 30px var(--serif)}
+.door h3{font-size:22px;margin:4px 0 2px}
+.door small{color:var(--muted);font-size:14.5px;display:block}
+
+.chapter{padding:56px 0;border-top:1px solid var(--line);scroll-margin-top:66px}
+.chapter:nth-of-type(even){background:var(--paper)}
+.ch-grid{display:grid;grid-template-columns:minmax(260px,400px) 1fr;gap:52px;align-items:start}
+.chapter:nth-of-type(even) .ch-grid{grid-template-columns:1fr minmax(260px,400px)}
+.chapter:nth-of-type(even) .ch-photo{order:2}
+.ch-photo{position:sticky;top:90px}
+.ch-photo .doorway{aspect-ratio:4/5}
+.ch-photo .credit{font-size:13px;color:var(--muted);text-align:center;margin-top:16px}
+.ch-photo .credit a{color:var(--muted)}
+.ch-head .numeral{font:600 italic 22px var(--serif);color:var(--accent)}
+.ch-head h2{font-size:56px;margin:2px 0 6px}
+.ch-head .dates{font:500 italic 22px var(--serif);color:var(--muted)}
+.stay-box{margin:22px 0;border:1.5px solid var(--ink);border-radius:var(--r);background:#fff;padding:18px 20px;position:relative}
+.stay-box::before{content:"";position:absolute;left:-1.5px;top:-1.5px;bottom:-1.5px;width:7px;background:var(--accent);border-radius:var(--r) 0 0 var(--r)}
+.stay-box h3{font-size:27px}
+.stay-box dl{display:grid;grid-template-columns:auto 1fr;gap:3px 16px;margin:10px 0 14px;font-size:17px}
+.stay-box dt{color:var(--muted)}
+.stay-box dd{margin:0}
+.stay-box .note{font-size:16.5px;color:#3c423d;margin-bottom:14px}
+.flag{font-size:15px;background:#fbf3df;border-left:3px solid var(--amber);padding:6px 10px;margin:-4px 0 14px;border-radius:0 8px 8px 0}
+.wxline{font:500 italic 19px var(--serif);color:var(--sapphire);margin:-6px 0 4px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:24px}
+.listhead{display:flex;align-items:baseline;gap:10px;border-bottom:1.5px solid var(--ink);padding-bottom:6px;margin-bottom:10px}
+.listhead h3{font-size:26px}
+.listhead .sc{color:var(--muted);font-size:11px}
+.items{list-style:none;margin:0;padding:0}
+.items li{padding:9px 0;border-bottom:1px solid var(--line)}
+.items a{text-decoration:none;color:var(--ink)}
+.items a:hover .nm{color:var(--emerald);text-decoration:underline}
+.items .nm{font-weight:600;font-size:18px}
+.items .ds{display:block;color:var(--muted);font-size:16px;line-height:1.4}
+.tag{display:inline-block;font:600 10.5px var(--text);letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;border-radius:999px;background:var(--hydr-soft);color:var(--sapphire);margin-left:6px;vertical-align:2px}
+.tag.gold{background:#f6ead0;color:#7a5410}
+.essentials{margin-top:24px}
+.essentials .btns{margin-top:8px}
+.ess{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-size:15.5px;text-decoration:none;color:var(--ink)}
+.ess:hover{border-color:var(--ink)}
+
+.closing{padding:60px 0}
+.closing .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cardx{background:#fff;border:1.5px solid var(--ink);border-radius:var(--r);padding:20px}
+.cardx h3{font-size:26px;margin-bottom:8px}
+.cardx ul{margin:0;padding-left:18px}
+.cardx li{margin:5px 0;font-size:16.5px}
+details{border-top:1px solid var(--line);padding:10px 0}
+summary{cursor:pointer;font:600 22px var(--serif)}
+footer{text-align:center;color:var(--muted);font-size:14.5px;padding:30px 20px 60px}
+
+/* ===== DASHBOARD ===== */
+#dash{display:grid;grid-template-columns:1fr 440px;height:calc(100vh - 66px);height:calc(100dvh - 66px)}
+#dashMapSlot{position:relative;min-height:0}
+#dashMapSlot #map{position:absolute;inset:0}
+.side{background:var(--paper);border-left:2px solid var(--ink);display:flex;flex-direction:column;min-height:0}
+.stops{display:flex;gap:6px;overflow-x:auto;padding:12px 14px;border-bottom:1px solid var(--line);scrollbar-width:none}
+.stop{flex:none;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:5px 12px;cursor:pointer;font-size:16px;display:flex;gap:6px;align-items:center}
+.stop i{font:600 italic 17px var(--serif);color:var(--accent)}
+.stop[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:#fff}
+.stop[aria-pressed="true"] i{color:var(--lamp)}
+.tabs{display:flex;border-bottom:1.5px solid var(--ink)}
+.tabs button{flex:1;border:0;background:none;padding:12px 4px;cursor:pointer;font:600 12px var(--text);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-1.5px}
+.tabs button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--amber)}
+.pane{overflow-y:auto;padding:16px 18px 30px;flex:1}
+.pane h3.grp{font-size:25px;margin:18px 0 6px;display:flex;align-items:center;gap:8px}
+.pane h3.grp:first-child{margin-top:0}
+.pane h3.grp i{font-size:18px;color:var(--accent)}
+.daycard{border-left:4px solid var(--accent);background:#fff;border-radius:0 10px 10px 0;padding:10px 14px;margin-bottom:10px}
+.daycard.today{box-shadow:0 0 0 2px var(--amber)}
+.daycard .sc{color:var(--muted);font-size:11px}
+.daycard h4{font:600 21px var(--serif);margin:3px 0 2px}
+.daycard ul{margin:4px 0 0;padding-left:18px;font-size:16px}
+.mini{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+.mini h4{font:600 22px var(--serif);margin:0 0 4px}
+.mini dl{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;margin:6px 0 10px;font-size:16px}
+.mini dt{color:var(--muted)} .mini dd{margin:0}
+.wxrow{display:grid;grid-template-columns:1fr auto auto auto;gap:12px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line);font-size:16px}
+.wxrow .e{font-size:19px}
+.wxrow .rain{color:var(--sapphire);font-size:14px;font-weight:600;min-width:46px;text-align:right}
+textarea{width:100%;min-height:80px;border:1px solid var(--line);border-radius:10px;padding:9px 11px;font:16px var(--text);background:#fffdf8;resize:vertical}
+.note-lbl{font:600 20px var(--serif);margin:12px 0 4px}
+
+/* phone dashboard */
+body.d-phone #dash{display:flex;flex-direction:column;height:auto}
+body.d-phone #dashMapSlot{height:52vh;height:52dvh;position:sticky;top:66px;z-index:1}
+body.d-phone .side{border-left:0;border-top:2px solid var(--ink);position:relative;z-index:2;min-height:60vh}
+body.d-phone .tabs{position:fixed;bottom:0;left:0;right:0;z-index:1600;background:var(--ivy);border:0;padding-bottom:env(safe-area-inset-bottom)}
+body.d-phone .tabs button{color:rgba(255,255,255,.65);padding:14px 2px;border-bottom:0;border-top:3px solid transparent;margin:0}
+body.d-phone .tabs button[aria-pressed="true"]{color:#fff;border-top-color:var(--lamp)}
+body.d-phone .pane{padding-bottom:90px;overflow:visible}
+
+/* ===== map ===== */
+#map{background:#e8e4da}
+#mapOverlay{position:fixed;inset:0;z-index:4000;background:var(--ivy);display:flex;flex-direction:column}
+#mapOverlay .bar{display:flex;align-items:center;gap:10px;padding:10px 14px;color:#fff}
+#mapOverlay .bar .stops{border:0;padding:0;flex:1}
+#mapOverlay .bar .stop{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#fff}
+#mapOverlay .bar .stop i{color:var(--lamp)}
+#mapOverlay .bar .stop[aria-pressed="true"]{background:var(--paper);color:var(--ink)}
+#mapOverlay .bar .stop[aria-pressed="true"] i{color:var(--accent)}
+#overlaySlot{flex:1;position:relative}
+#overlaySlot #map{position:absolute;inset:0}
+.closebtn{border:1.5px solid #fff;background:none;color:#fff;border-radius:999px;padding:7px 14px;cursor:pointer;font:600 12px var(--text);letter-spacing:.14em;text-transform:uppercase;flex:none}
+.leaflet-container{font:16px var(--text)}
+.leaflet-bar a{width:40px!important;height:40px!important;line-height:40px!important;font-size:22px!important}
+.leaflet-popup-content-wrapper{border-radius:12px;border:1.5px solid var(--ink)}
+.leaflet-popup-content{font:16px/1.45 var(--text);margin:12px 16px}
+.leaflet-popup-content b.t{font:600 21px var(--serif);display:block}
+.leaflet-popup-content a{font-weight:600}
+.mapbtn{background:var(--paper);border:2px solid rgba(0,0,0,.2);border-radius:8px;padding:8px 12px;cursor:pointer;font:600 12px var(--text);letter-spacing:.12em;text-transform:uppercase}
+.spin{width:38px;height:48px;position:relative}
+.spin .arch{position:absolute;inset:0 4px 10px;border-radius:999px 999px 4px 4px;border:2.5px solid #fff;box-shadow:0 3px 10px rgba(0,0,0,.4);display:grid;place-items:center;color:#fff;font:600 italic 17px "Cormorant Garamond",serif;padding-top:3px}
+.spin::after{content:"";position:absolute;left:50%;bottom:2px;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:var(--ink);border:2px solid #fff}
+.dot{width:24px;height:24px;border-radius:50%;background:var(--paper);border:2px solid var(--c);display:grid;place-items:center;font-size:13px;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+
+/* ===== image modal ===== */
+#imgModal{position:fixed;inset:0;z-index:6000;background:rgba(15,42,32,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;gap:14px}
+#imgModal img{max-width:min(92vw,520px);max-height:72vh;border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,.5);background:#fff}
+#imgModal p{color:#fff;opacity:.85;margin:0;text-align:center;font-size:16px}
+#imgModal .btn{border-color:#fff;color:#fff}
+#imgModal .btn.solid{background:var(--lamp);border-color:var(--lamp);color:var(--ink)}
+
+/* ===== responsive: phone device or narrow screens ===== */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero .panel{display:none}
+  .ch-grid,.chapter:nth-of-type(even) .ch-grid{grid-template-columns:1fr;gap:26px}
+  .chapter:nth-of-type(even) .ch-photo{order:0}
+  .ch-photo{position:static}
+  .closing .grid{grid-template-columns:1fr}
+  #dash{grid-template-columns:1fr 380px}
+}
+@media (max-width:700px){
+  .doors{grid-template-columns:1fr}
+  .cols{grid-template-columns:1fr;gap:20px}
+}
+body.d-phone{font-size:17.5px}
+body.d-phone .hero-grid{grid-template-columns:1fr}
+body.d-phone .hero .panel{display:none}
+body.d-phone .doorway .cap h1{font-size:50px}
+body.d-phone .herotext .lede{font-size:23px}
+body.d-phone .doors{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;padding-bottom:6px;scrollbar-width:none}
+body.d-phone .door{flex:0 0 150px;scroll-snap-align:start;padding-top:24px}
+body.d-phone .ch-grid,body.d-phone .chapter:nth-of-type(even) .ch-grid{grid-template-columns:1fr;gap:22px}
+body.d-phone .chapter:nth-of-type(even) .ch-photo{order:0}
+body.d-phone .ch-photo{position:static}
+body.d-phone .ch-photo .doorway{aspect-ratio:1/1;max-width:340px;margin:0 auto}
+body.d-phone .ch-head{text-align:center}
+body.d-phone .ch-head h2{font-size:46px}
+body.d-phone .chapter{padding:40px 0}
+body.d-phone .cols{grid-template-columns:1fr;gap:22px}
+body.d-phone .closing .grid{grid-template-columns:1fr}
+body.d-phone .btn{padding:10px 15px}
+body.d-phone .toggle button{padding:6px 10px;font-size:11px;letter-spacing:.1em}
+body.d-phone .wrap{padding:0 16px}
+</style>
+</head>
+<body>
+
+<!-- ============ GATE ============ -->
+<div id="gate" class="lattice hidden">
+  <div class="gate-arch">
+    <div class="sc" style="color:var(--muted)">November 4 to 15</div>
+    <h1>Costa Rica</h1>
+    <div class="it">five stops, eleven nights</div>
+    <div class="q sc">You're on a</div>
+    <div class="seg" data-group="device">
+      <button class="opt" data-val="phone"><b>Phone</b><small>Big buttons, one thing at a time</small></button>
+      <button class="opt" data-val="desktop"><b>Desktop</b><small>Wide map, side by side</small></button>
+    </div>
+    <div class="q sc">Show me</div>
+    <div class="seg" data-group="view">
+      <button class="opt" data-val="simple"><b>Simple</b><small>The journey, stop by stop</small></button>
+      <button class="opt" data-val="dashboard"><b>Dashboard</b><small>Map, plans, weather, notes</small></button>
+    </div>
+    <button class="enter" id="enter">Enter</button>
+  </div>
+</div>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand">Costa Rica <small>Nov 4 to 15</small></div>
+    <div class="spacer"></div>
+    <div class="toggle" id="viewToggle">
+      <button data-val="simple">Simple</button>
+      <button data-val="dashboard">Dashboard</button>
+    </div>
+    <button class="devbtn" id="devBtn" title="Switch phone or desktop layout">Desktop</button>
+  </div>
+</header>
+<div class="trim"></div>
+
+<!-- ============ SIMPLE ============ -->
+<main id="simple">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="panel lattice" style="border-radius:999px 0 0 0"></div>
+        <div class="doorway">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Arenal_volcano_%2870785p%29_%28cropped%29.jpg/1280px-Arenal_volcano_%2870785p%29_%28cropped%29.jpg" alt="Arenal Volcano above green pasture">
+          <div class="cap"><h1>Costa Rica</h1><div class="it">November 4 to 15, 2026</div></div>
+        </div>
+        <div class="panel lattice" style="border-radius:0 999px 0 0"></div>
+      </div>
+      <div class="herotext">
+        <p class="lede">From the Central Valley to the volcano, up into the cloud forest and down to the Pacific.</p>
+        <div class="nowline" id="nowline"></div>
+        <div class="btns">
+          <button class="btn solid" data-openmap="0">Open the map</button>
+          <button class="btn" data-save="itinerary">Save itinerary image</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap"><nav class="doors" id="doors"></nav></section>
+  <div id="chapters"></div>
+
+  <section class="closing" id="before">
+    <div class="wrap">
+      <div class="grid">
+        <div class="cardx">
+          <h3>Before we go</h3>
+          <ul>
+            <li><b>Manuel Antonio park tickets</b> for Fri Nov 13, online only through <a href="https://serviciosenlinea.sinac.go.cr/" target="_blank" rel="noopener">SINAC</a>. Our tour is included, the $18 entry is not.</li>
+            <li><b>Monteverde Reserve</b>: book a 7 AM entry with a guide.</li>
+            <li>Download offline Google Maps for Costa Rica and install Waze.</li>
+            <li>Save the itinerary image to your phone in case signal drops.</li>
+          </ul>
+        </div>
+        <div class="cardx">
+          <h3>Eating gluten free</h3>
+          <ul>
+            <li>Naturally safe staples: corn tortillas, rice and beans, gallo pinto, grilled fish, plantains, fresh fruit.</li>
+            <li>Ask about sauces, breading and shared fryers every time.</li>
+            <li>Restaurant listings below come from celiac review sites. Recent reviews beat old ones; confirm with the server.</li>
+          </ul>
+          <div class="btns" style="margin-top:12px"><button class="btn solid" data-save="gf">Save Spanish card</button></div>
+        </div>
+        <div class="cardx">
+          <h3>On the road</h3>
+          <ul>
+            <li>Sunset is about 5:15 PM. Arrive before dark every drive day.</li>
+            <li>Gas is full service: <span class="it">"lleno con regular, por favor."</span></li>
+            <li>Nothing visible in the car, ever.</li>
+            <li>Bills include 10% service. Emergency: 911.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer>Photographs from Wikimedia Commons, credited under each. Map pins are approximate; use the Directions buttons. Pura vida.</footer>
+</main>
+
+<!-- ============ DASHBOARD ============ -->
+<main id="dash" class="hidden">
+  <div id="dashMapSlot"></div>
+  <aside class="side">
+    <div class="stops" id="dashStops"></div>
+    <div class="tabs" id="tabs">
+      <button data-tab="plan">Plan</button>
+      <button data-tab="dine">Dine</button>
+      <button data-tab="do">Do</button>
+      <button data-tab="weather">Weather</button>
+      <button data-tab="notes">Notes</button>
+    </div>
+    <div class="pane" id="pane"></div>
+  </aside>
+</main>
+
+<!-- ============ MAP OVERLAY (simple view) ============ -->
+<div id="mapOverlay" class="hidden">
+  <div class="bar"><div class="stops" id="overlayStops"></div><button class="closebtn" id="closeMap">Close</button></div>
+  <div id="overlaySlot"><div id="map"></div></div>
+</div>
+
+<!-- ============ IMAGE MODAL ============ -->
+<div id="imgModal" class="hidden">
+  <img id="imgOut" alt="Saved card">
+  <p>On iPhone: press and hold the image, then <b>Save to Photos</b>.</p>
+  <div class="btns" style="justify-content:center"><a class="btn solid" id="imgDl" download>Download</a><button class="btn" id="imgClose">Close</button></div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+/* ================================================================
+   TRIP DATA. Add Airbnb links in `airbnb`, fix pins in lat/lng.
+   tags on dining: what celiac review sites say. Always confirm.
+   ================================================================ */
+const STAYS = [
+  {
+    id:1, rn:"I", area:"Alajuela", short:"Alajuela", c:"#8a2d36",
+    name:"The Dragonfly Garden", checkIn:"2026-11-04", checkOut:"2026-11-05", inTime:"3 PM", outTime:"11 AM",
+    host:"Carol", address:"Plaza Real Alajuela, Avenida 10, Jesús Ocaña Rojas, Alajuela 20101",
+    nav:"Plaza Real Alajuela, Alajuela, Costa Rica", lat:10.0105, lng:-84.2095, airbnb:"",
+    note:"Arrival night, minutes from the airport. Dinner, groceries for the week, early night.",
+    photo:{src:"https://upload.wikimedia.org/wikipedia/commons/d/d6/Alajuela%2C_Costa_Rica_-_Night_Skyline.png", page:"https://commons.wikimedia.org/wiki/File:Alajuela,_Costa_Rica_-_Night_Skyline.png", alt:"Alajuela at night"},
+    dine:[
+      {n:"Ruta 3", d:"Gluten-free café listed in Alajuela (Copa Blanca). Confirm hours before going.", t:"GF café"},
+      {n:"Hooligan's Plaza Tropicana", d:"Relaxed pub with a gluten-free menu, including pizza and pasta.", t:"GF menu"},
+      {n:"Rosti City Mall Alajuela", d:"Rotisserie chicken, easy first-night dinner. Gluten-free menu listed.", t:"GF menu"}
+    ],
+    todo:[
+      {n:"Parque Central and the Cathedral", d:"The 'mango park'. Evening stroll five minutes away."},
+      {n:"Mercado Central de Alajuela", d:"Fruit, cheese and coffee on Thursday morning before checkout."},
+      {n:"Doka Estate coffee tour", d:"Working coffee farm 30 min north. Optional Thursday 9 AM tour.", lat:10.093, lng:-84.256, i:"☕"},
+      {n:"Poás Volcano", d:"Optional and only with an early start. Crater clouds over by 10 AM.", lat:10.1978, lng:-84.2306, i:"🌋"}
+    ]
+  },
+  {
+    id:2, rn:"II", area:"San Carlos · Arenal", short:"Arenal", c:"#1d5e45",
+    name:"Elite View Casita 06", checkIn:"2026-11-05", checkOut:"2026-11-09", inTime:"3 PM", outTime:"11 AM",
+    host:"German", address:"100 m from the cemetery, San Carlos, Alajuela",
+    nav:"La Fortuna, San Carlos, Costa Rica", lat:10.4678, lng:-84.6427, airbnb:"", approx:true,
+    note:"Gated casita with views of Arenal, and Tenorio on clear days. Four nights: the adventure base.",
+    flag:"The pin shows the Arenal area, not the casita. Use the exact pin in the Airbnb app.",
+    photo:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Arenal_volcano_%2870785p%29_%28cropped%29.jpg/1280px-Arenal_volcano_%2870785p%29_%28cropped%29.jpg", page:"https://commons.wikimedia.org/wiki/File:Arenal_volcano_(70785p)_(cropped).jpg", alt:"Arenal Volcano"},
+    dine:[
+      {n:"Don Rufino", d:"La Fortuna's dress-up dinner. Reviewers mark it celiac friendly.", t:"Celiac friendly"},
+      {n:"Organico Fortuna", d:"Healthy café a celiac reviewer called a standout.", t:"GF options"},
+      {n:"El Chante Verde", d:"Plant-based, on the gluten-free top lists for La Fortuna.", t:"GF options"},
+      {n:"Arenal Springs Resort", d:"Four restaurants; a celiac guest said every server understood.", t:"Celiac aware"}
+    ],
+    todo:[
+      {n:"La Fortuna Waterfall", d:"500 steps down to a 70 m fall you can swim at. Go at 7 AM.", lat:10.4446, lng:-84.6762, i:"💦"},
+      {n:"Arenal Volcano National Park", d:"Easy lava-field trails under the cone. SINAC tickets.", lat:10.4626, lng:-84.7032, i:"🌋"},
+      {n:"Místico Hanging Bridges", d:"Rainforest canopy walk. Morning for birds.", lat:10.5021, lng:-84.7616, i:"🌉"},
+      {n:"Hot springs", d:"Tabacón is the splurge; Baldi is lively; the free hot river is where locals go.", lat:10.4920, lng:-84.7240, i:"♨️"},
+      {n:"Rainforest Chocolate Tour", d:"Bean to bar in 90 minutes. Good rainy afternoon.", lat:10.4735, lng:-84.6560, i:"🍫"},
+      {n:"North Fields Café", d:"Coffee, cacao and sugar cane farm tour.", lat:10.4785, lng:-84.6620, i:"☕"},
+      {n:"Río Celeste, Tenorio Volcano", d:"The impossibly blue river. Full day; ask German about the drive.", lat:10.7130, lng:-84.9930, i:"💎"},
+      {n:"White-water rafting, Río Balsa", d:"Class II to III, half day, very popular from La Fortuna."},
+      {n:"Lake Arenal kayak or paddleboard", d:"Calm mornings with the volcano behind you."}
+    ]
+  },
+  {
+    id:3, rn:"III", area:"Monteverde", short:"Monteverde", c:"#5a3e8a",
+    name:"Eco Forest Dome", checkIn:"2026-11-09", checkOut:"2026-11-12", inTime:"3 PM", outTime:"11 AM",
+    host:"Harry", address:"200 m north of Escuela de Los Llanos, road to Monteverde (Route 606)",
+    nav:"Escuela Los Llanos, Monteverde, Costa Rica", lat:10.2935, lng:-84.8395, airbnb:"",
+    note:"Navigate to the Los Llanos school, then 200 m north. Cool, misty and windy: bring the fleece. Fill the tank before the climb.",
+    photo:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Monteverde_bosque.jpg/1280px-Monteverde_bosque.jpg", page:"https://commons.wikimedia.org/wiki/File:Monteverde_bosque.jpg", alt:"Monteverde cloud forest"},
+    dine:[
+      {n:"Restaurante El Sapo at Senda Monteverde", d:"The most praised celiac option in town. Many gluten-free dishes.", t:"Celiac friendly"},
+      {n:"Tree House Restaurant", d:"Built around a giant ficus in Santa Elena. Gluten-free dishes marked.", t:"GF marked"},
+      {n:"Travesía Restaurant", d:"Listed with gluten-free options. Ask about the fryer.", t:"GF options"}
+    ],
+    todo:[
+      {n:"Monteverde Cloud Forest Reserve", d:"Enter at 7 AM with a guide for the best chance at a quetzal.", lat:10.3017, lng:-84.7953, i:"🌲"},
+      {n:"Curi-Cancha Reserve", d:"Smaller, quieter, superb birding.", lat:10.3052, lng:-84.8044, i:"🐦"},
+      {n:"Night walk", d:"Sloths, tarantulas, glass frogs. Any 5:45 PM tour."},
+      {n:"Selvatura or Sky Adventures", d:"Hanging bridges, or ziplines above the canopy.", lat:10.3343, lng:-84.8040, i:"🌉"},
+      {n:"El Trapiche farm tour", d:"Family farm: coffee, sugar cane and cacao.", lat:10.3220, lng:-84.8270, i:"🐄"},
+      {n:"Café Caburé", d:"Handmade chocolate truffles.", lat:10.3060, lng:-84.8170, i:"🍫"},
+      {n:"Monteverde Cheese Factory", d:"Founded by the Quaker settlers. Ice cream stop.", lat:10.3040, lng:-84.8100, i:"🧀"},
+      {n:"100% Aventura", d:"The long 'Superman' zipline, if you want the thrill."}
+    ]
+  },
+  {
+    id:4, rn:"IV", area:"Manuel Antonio", short:"Manuel Antonio", c:"#2d4fa0",
+    name:"Jungle Room, breakfast and park tour", checkIn:"2026-11-12", checkOut:"2026-11-14", inTime:"2 PM", outTime:"11 AM",
+    host:"(add name)", address:"Calle Cerros, Manuel Antonio, Quepos",
+    nav:"Manuel Antonio, Quepos, Costa Rica", lat:9.4010, lng:-84.1550, airbnb:"",
+    note:"Homemade Costa Rican breakfast and a guided park tour are included. Park entry tickets are not: buy them for Fri Nov 13.",
+    flag:"Area matched from the listing title. Confirm the exact spot in the Airbnb app.",
+    photo:{src:"https://upload.wikimedia.org/wikipedia/commons/6/69/Manuel_antonio_06_april_2005.jpeg", page:"https://commons.wikimedia.org/wiki/File:Manuel_antonio_06_april_2005.jpeg", alt:"Manuel Antonio beach"},
+    dine:[
+      {n:"Namaste Indian Restaurant Manuel Antonio", d:"Reviewers single out how many dishes are gluten free.", t:"Many GF dishes"},
+      {n:"Karola's", d:"A diner with a gluten allergy said they go above and beyond.", t:"Celiac aware"},
+      {n:"Arenas del Mar", d:"Resort restaurant with a gluten-free menu and an ocean view.", t:"GF menu"},
+      {n:"Manuel Antonio Falafel Bar", d:"Casual lunch, gluten-free accommodating.", t:"GF options"}
+    ],
+    todo:[
+      {n:"Manuel Antonio National Park", d:"Our guided tour is included. Closed Tuesdays. Sloths, monkeys, white-sand coves.", lat:9.3870, lng:-84.1430, i:"🦥"},
+      {n:"Playa Espadilla", d:"Public beach outside the park. Sunset chairs.", lat:9.3920, lng:-84.1470, i:"🏖️"},
+      {n:"Sunset catamaran", d:"Dolphins, snorkeling and a sunset sail from Quepos."},
+      {n:"El Avión", d:"Drinks inside a 1950s cargo plane at sunset.", lat:9.4000, lng:-84.1560, i:"✈️"},
+      {n:"Villa Vanilla spice farm", d:"Vanilla, cinnamon and cacao tasting, 25 min inland.", lat:9.4560, lng:-84.0900, i:"🌿"},
+      {n:"Isla Damas mangroves", d:"Kayak or boat through the mangroves; monkeys and crocodiles."},
+      {n:"Surf lesson", d:"Gentle beginner waves on Playa Espadilla."}
+    ]
+  },
+  {
+    id:5, rn:"V", area:"San Pablo de Heredia", short:"Heredia", c:"#a87422",
+    name:"New Studio near the Airport Hub", checkIn:"2026-11-14", checkOut:"2026-11-15", inTime:"3 PM", outTime:"11 AM",
+    host:"Miguel", address:"Calle Cariari, Apartment 808, San Pablo, Heredia",
+    nav:"San Pablo, Heredia, Costa Rica", lat:9.9960, lng:-84.0950, airbnb:"",
+    note:"Last night. Repack, refuel the rental, buy coffee to bring home.",
+    photo:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/IglesiaLaInmaculadaHeredia.JPG/960px-IglesiaLaInmaculadaHeredia.JPG", page:"https://commons.wikimedia.org/wiki/File:IglesiaLaInmaculadaHeredia.JPG", alt:"Church of the Immaculate Conception, Heredia"},
+    dine:[
+      {n:"Pollo FAS Gluten Free", d:"100% dedicated gluten-free kitchen in Santa Bárbara de Heredia, 15 min.", t:"Dedicated GF"},
+      {n:"Ruta 3 Heredia", d:"Gluten-free menu listed in Heredia.", t:"GF menu"},
+      {n:"Baru, Paseo Belén", d:"Gluten-free sandwiches, burgers and cakes.", t:"GF options"}
+    ],
+    todo:[
+      {n:"Café Britt Coffee Tour", d:"Theatrical coffee tour in Barva, 15 min.", lat:10.0235, lng:-84.1095, i:"☕"},
+      {n:"Toucan Rescue Ranch", d:"Sloths and toucans in rehab. Book ahead.", lat:10.0390, lng:-84.0610, i:"🦜"},
+      {n:"Supermarket coffee run", d:"Café 1820, Britt, Doka for gifts at half the airport price."},
+      {n:"Heredia's Fortín and park", d:"Colonial tower and church, a short evening walk."}
+    ]
+  }
+];
+
+const ROUTE = [
+  {i:"✈️", n:"SJO Juan Santamaría Airport", d:"Arrive Wed Nov 4. Fly home Sun Nov 15.", lat:9.9939, lng:-84.2088},
+  {i:"⛪", n:"Grecia's red metal church", d:"Stop on the drive north, Thu Nov 5.", lat:10.0730, lng:-84.3123},
+  {i:"🛞", n:"Sarchí", d:"Painted oxcarts. A twenty minute stop.", lat:10.0897, lng:-84.3478},
+  {i:"🌿", n:"Zarcero topiary park", d:"Hedge sculptures and a pink church.", lat:10.1858, lng:-84.3911},
+  {i:"🥐", n:"Tom's Pan, Nuevo Arenal", d:"German bakery on the lake road, Mon Nov 9.", lat:10.5340, lng:-84.8900},
+  {i:"🐊", n:"Tárcoles crocodile bridge", d:"Giant crocodiles below, Thu Nov 12.", lat:9.7895, lng:-84.6086}
+];
+
+const DRIVES = {
+  2:"Alajuela to Arenal · about 2.5 to 3 h via Grecia, Sarchí, Zarcero",
+  3:"Arenal to Monteverde · about 3.5 to 4 h around Lake Arenal",
+  4:"Monteverde to Manuel Antonio · about 3.5 to 4 h down Route 606 and the coast",
+  5:"Manuel Antonio to Heredia · about 3 h via Route 27"
+};
+
+const DAYS = [
+  {date:"2026-11-04", stay:1, title:"Land, settle in", items:["Rental car and SIM at SJO","Check in from 3 PM with Carol","Groceries and colones for the week; easy dinner"]},
+  {date:"2026-11-05", stay:2, title:"North to Arenal", items:["Checkout 11 AM (Doka coffee tour first, if up early)","Grecia church, Sarchí oxcarts, Zarcero topiaries","Check in from 3 PM with German; sunset from the lookout"]},
+  {date:"2026-11-06", stay:2, title:"Volcano day", items:["La Fortuna Waterfall at 7 AM","Arenal National Park lava trails","Evening hot springs"]},
+  {date:"2026-11-07", stay:2, title:"Canopy and chocolate", items:["Místico hanging bridges in the morning","Chocolate tour or North Fields farm","Dinner at Don Rufino"]},
+  {date:"2026-11-08", stay:2, title:"Open day", items:["Río Celeste day trip, rafting, or a slow rain day","Fill the gas tank tonight"]},
+  {date:"2026-11-09", stay:3, title:"Lake road to Monteverde", items:["Checkout 11 AM; drive around Lake Arenal","Pastries at Tom's Pan","Check in from 3 PM with Harry; night walk at 5:45"]},
+  {date:"2026-11-10", stay:3, title:"Cloud forest", items:["Monteverde Reserve or Curi-Cancha at 7 AM with a guide","Café Caburé chocolate; cheese factory ice cream","Dinner at El Sapo"]},
+  {date:"2026-11-11", stay:3, title:"Canopy and farm", items:["Selvatura or Sky Adventures","El Trapiche farm tour","Pack the layers away"]},
+  {date:"2026-11-12", stay:4, title:"Down to the Pacific", items:["Checkout 11 AM","Tárcoles crocodile bridge","Check in from 2 PM; sunset at El Avión"]},
+  {date:"2026-11-13", stay:4, title:"Manuel Antonio park", items:["Breakfast, then the included park tour (bring SINAC tickets)","Beach inside the park","Sunset catamaran or Villa Vanilla"]},
+  {date:"2026-11-14", stay:5, title:"Back toward the airport", items:["Checkout 11 AM; about 3 h drive","Check in from 3 PM with Miguel","Coffee run, refuel, repack"]},
+  {date:"2026-11-15", stay:5, title:"Fly home", items:["Checkout by 11 AM, earlier for the flight","Return the car; allow time for the shuttle"]}
+];
+
+const ESSENTIALS = [["⛽","Gas","gas station"],["🛒","Groceries","supermarket"],["🏪","Corner store","convenience store"],["☕","Coffee","coffee shop"],["🍫","Chocolate","chocolate shop"],["🐄","Farms","farm tour"],["💊","Pharmacy","farmacia"],["🏧","ATM","cajero ATM"]];
+
+const CLIMATE = {1:"About 79° by day, 63° at night, afternoon showers.",2:"About 81° and 68°, humid; rain any time of day.",3:"About 68° and 59°, misty and windy. The cold stop.",4:"About 86° and 73°, hot with afternoon storms.",5:"About 77° and 61°, mild."};
+
+/* ================================================================ */
+const TZ = "America/Costa_Rica";
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const D = s => new Date(s + "T12:00:00Z");
+const fmt = (s, o) => D(s).toLocaleDateString("en-US", Object.assign({timeZone:"UTC"}, o));
+const short = s => fmt(s, {weekday:"short", month:"short", day:"numeric"});
+const md = s => fmt(s, {month:"short", day:"numeric"});
+const nights = s => Math.round((D(s.checkOut) - D(s.checkIn)) / 864e5);
+const todayCR = () => new Date().toLocaleDateString("en-CA", {timeZone:TZ});
+const gsearch = (q, lat, lng) => `https://www.google.com/maps/search/${encodeURIComponent(q)}/@${lat},${lng},14z`;
+const gplace = (n, s) => `https://www.google.com/maps/search/${encodeURIComponent(n + ", " + s.short + ", Costa Rica")}`;
+const gdir = q => `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(q)}`;
+const waze = q => `https://waze.com/ul?q=${encodeURIComponent(q)}&navigate=yes`;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const store = {
+  get(k){ try { return localStorage.getItem(k) || ""; } catch(e){ return ""; } },
+  set(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
+};
+const today = todayCR();
+const currentStay = () => STAYS.find(s => today >= s.checkIn && today < s.checkOut) || (today === "2026-11-15" ? STAYS[4] : null);
+
+/* ===== view + device ===== */
+const params = new URLSearchParams(location.search);
+let state = {
+  view: params.get("view") || store.get("cr-view"),
+  device: params.get("device") || store.get("cr-device")
+};
+const guessDevice = () => (matchMedia("(pointer:coarse)").matches || innerWidth < 760) ? "phone" : "desktop";
+
+function applyView(){
+  document.body.classList.toggle("d-phone", state.device === "phone");
+  document.body.classList.toggle("d-desktop", state.device !== "phone");
+  $("#devBtn").textContent = state.device === "phone" ? "Phone" : "Desktop";
+  $$("#viewToggle button").forEach(b => b.setAttribute("aria-pressed", b.dataset.val === state.view));
+  const dash = state.view === "dashboard";
+  $("#simple").classList.toggle("hidden", dash);
+  $("#dash").classList.toggle("hidden", !dash);
+  if (dash){ $("#dashMapSlot").appendChild($("#map")); closeOverlay(true); }
+  else { $("#overlaySlot").appendChild($("#map")); }
+  map.scrollWheelZoom[state.device === "desktop" && dash ? "enable" : "disable"]();
+  setTimeout(() => { map.invalidateSize(); if (dash) map.fitBounds(wholeTrip()); }, 60);
+  store.set("cr-view", state.view); store.set("cr-device", state.device);
+}
+
+function showGate(){
+  const g = $("#gate"); g.classList.remove("hidden");
+  const pre = {device: state.device || guessDevice(), view: state.view || "simple"};
+  $$("#gate .seg").forEach(seg => seg.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o.dataset.val === pre[seg.dataset.group])));
+  g.onclick = e => {
+    const o = e.target.closest(".opt");
+    if (o){ o.parentElement.querySelectorAll(".opt").forEach(x => x.setAttribute("aria-pressed", x === o)); pre[o.parentElement.dataset.group] = o.dataset.val; }
+  };
+  $("#enter").onclick = () => { state = pre; g.classList.add("hidden"); applyView(); scrollTo(0,0); };
+}
+
+$("#viewToggle").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; state.view = b.dataset.val; applyView(); scrollTo(0,0); });
+$("#devBtn").addEventListener("click", showGate);
+
+/* ===== map ===== */
+const map = L.map("map", {scrollWheelZoom:false, zoomSnap:0.5, zoomControl:false}).setView([10.0,-84.45], 8);
+L.control.zoom({position:"bottomright"}).addTo(map);
+const topo = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}", {maxZoom:19, attribution:"Tiles &copy; Esri"}).addTo(map);
+const streets = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom:19, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'});
+const sat = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {maxZoom:19, attribution:"Imagery &copy; Esri"});
+L.control.layers({"Terrain":topo, "Streets":streets, "Satellite":sat}, null, {position:"topright"}).addTo(map);
+
+const stayMarkers = {};
+const routePts = [[9.9939,-84.2088], ...STAYS.map(s => [s.lat, s.lng]), [9.9939,-84.2088]];
+const wholeTrip = () => L.latLngBounds(routePts).pad(0.1);
+L.polyline(routePts, {color:"#151a17", weight:2.5, opacity:.6, dashArray:"2 8", lineCap:"round"}).addTo(map);
+
+STAYS.forEach(s => {
+  if (s.approx) L.circle([s.lat, s.lng], {radius:9000, color:s.c, weight:1.5, fillOpacity:.07, dashArray:"4 6"}).addTo(map);
+  stayMarkers[s.id] = L.marker([s.lat, s.lng], {zIndexOffset:1000, icon:L.divIcon({className:"", html:`<div class="spin"><div class="arch" style="background:${s.c}">${s.rn}</div></div>`, iconSize:[38,48], iconAnchor:[19,46], popupAnchor:[0,-42]})})
+    .addTo(map).bindPopup(`<b class="t">${s.rn}. ${esc(s.area)}</b>${esc(s.name)}<br>${short(s.checkIn)} to ${short(s.checkOut)}<br>Host ${esc(s.host)} · in ${s.inTime}, out ${s.outTime}<br><a href="${gdir(s.nav)}" target="_blank" rel="noopener">Directions ↗</a>`);
+  s.todo.filter(p => p.lat).forEach(p => {
+    L.marker([p.lat, p.lng], {icon:L.divIcon({className:"", html:`<div class="dot" style="--c:${s.c}">${p.i}</div>`, iconSize:[24,24], iconAnchor:[12,12], popupAnchor:[0,-10]})})
+      .addTo(map).bindPopup(`<b class="t">${esc(p.n)}</b>${esc(p.d)}<br><a href="${gplace(p.n, s)}" target="_blank" rel="noopener">Open in Google Maps ↗</a>`);
+  });
+});
+ROUTE.forEach(p => L.marker([p.lat, p.lng], {icon:L.divIcon({className:"", html:`<div class="dot" style="--c:#151a17">${p.i}</div>`, iconSize:[24,24], iconAnchor:[12,12]})})
+  .addTo(map).bindPopup(`<b class="t">${esc(p.n)}</b>${esc(p.d)}<br><a href="https://www.google.com/maps/search/${encodeURIComponent(p.n + ", Costa Rica")}" target="_blank" rel="noopener">Open in Google Maps ↗</a>`));
+map.fitBounds(wholeTrip());
+
+function goStop(id){
+  if (!id){ map.flyToBounds(wholeTrip(), {duration:.8}); map.closePopup(); return; }
+  const s = STAYS.find(x => x.id === id);
+  map.flyTo([s.lat, s.lng], s.approx ? 11 : 12.5, {duration:.8});
+  setTimeout(() => stayMarkers[id].openPopup(), 850);
+}
+
+/* stop selector chips (dashboard + overlay) */
+const stopChips = () => `<button class="stop" data-stop="0" aria-pressed="true">All</button>` +
+  STAYS.map(s => `<button class="stop" data-stop="${s.id}" style="--accent:${s.c}"><i>${s.rn}</i>${esc(s.short)}</button>`).join("");
+let activeStop = 0;
+function setStop(id, fly = true){
+  activeStop = id;
+  $$(".stop").forEach(b => b.setAttribute("aria-pressed", +b.dataset.stop === id));
+  if (fly) goStop(id);
+  renderPane();
+}
+["#dashStops", "#overlayStops"].forEach(sel => {
+  $(sel).innerHTML = stopChips();
+  $(sel).addEventListener("click", e => { const b = e.target.closest(".stop"); if (b) setStop(+b.dataset.stop); });
+});
+
+/* simple view map overlay */
+function openOverlay(id){
+  $("#mapOverlay").classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+  setTimeout(() => { map.invalidateSize(); setStop(id || 0); }, 50);
+}
+function closeOverlay(silent){
+  $("#mapOverlay").classList.add("hidden");
+  document.body.style.overflow = "";
+}
+$("#closeMap").onclick = () => closeOverlay();
+document.addEventListener("click", e => { const b = e.target.closest("[data-openmap]"); if (b) openOverlay(+b.dataset.openmap); });
+
+/* ===== SIMPLE: hero line, doors, chapters ===== */
+(function nowLine(){
+  const start = "2026-11-04", d = Math.round((D(start) - D(today)) / 864e5), s = currentStay();
+  $("#nowline").innerHTML = d > 0 ? `<span class="sc">${d} ${d === 1 ? "day" : "days"} to go</span> &nbsp;·&nbsp; we fly Wednesday, November 4`
+    : s ? `<span class="sc">Today</span> &nbsp;·&nbsp; ${esc(s.area)}, ${esc(s.name)}` : `<span class="sc">Pura vida</span> &nbsp;·&nbsp; home again`;
+})();
+
+$("#doors").innerHTML = STAYS.map(s => `<a class="door" href="#ch-${s.id}" style="--accent:${s.c}">
+  <div class="num" style="color:${s.c}">${s.rn}</div><h3>${esc(s.short)}</h3><small>${md(s.checkIn)} to ${md(s.checkOut)}</small><small>${nights(s)} night${nights(s) > 1 ? "s" : ""}</small></a>`).join("");
+
+$("#chapters").innerHTML = STAYS.map(s => {
+  const n = nights(s);
+  return `<section class="chapter" id="ch-${s.id}" style="--accent:${s.c}">
+    <div class="wrap"><div class="ch-grid">
+      <div class="ch-photo">
+        <div class="doorway"><img loading="lazy" src="${s.photo.src}" alt="${esc(s.photo.alt)}"></div>
+        <div class="credit">Photo: <a href="${s.photo.page}" target="_blank" rel="noopener">Wikimedia Commons</a> · <a href="${s.photo.page}" target="_blank" rel="noopener">full size ↗</a></div>
+      </div>
+      <div>
+        <div class="ch-head">
+          <div class="numeral">Stop ${s.rn}</div>
+          <h2>${esc(s.area)}</h2>
+          <div class="dates">${fmt(s.checkIn,{weekday:"long",month:"long",day:"numeric"})} to ${fmt(s.checkOut,{weekday:"long",month:"long",day:"numeric"})} · ${n} night${n > 1 ? "s" : ""}</div>
+          ${DRIVES[s.id] ? `<div style="color:var(--muted);font-size:16px;margin-top:6px">🚗 ${DRIVES[s.id]}</div>` : ""}
+        </div>
+        <div class="stay-box">
+          <div class="sc" style="color:var(--muted);font-size:11px;margin-bottom:4px">Where we sleep</div>
+          <h3>${esc(s.name)}</h3>
+          <dl>
+            <dt>Host</dt><dd>${esc(s.host)}</dd>
+            <dt>Check in</dt><dd>${short(s.checkIn)}, from ${s.inTime}</dd>
+            <dt>Check out</dt><dd>${short(s.checkOut)}, by ${s.outTime}</dd>
+            <dt>Address</dt><dd>${esc(s.address)}</dd>
+          </dl>
+          <div class="note">${esc(s.note)}</div>
+          ${s.flag ? `<div class="flag">${esc(s.flag)}</div>` : ""}
+          <div class="wxline" id="wxline-${s.id}">${CLIMATE[s.id]}</div>
+          <div class="btns" style="margin-top:12px">
+            <a class="btn solid" href="${gdir(s.nav)}" target="_blank" rel="noopener">Directions</a>
+            <a class="btn" href="${waze(s.nav)}" target="_blank" rel="noopener">Waze</a>
+            <a class="btn" href="${s.airbnb || "https://www.airbnb.com/trips"}" target="_blank" rel="noopener">Airbnb</a>
+            <button class="btn" data-openmap="${s.id}">Map</button>
+            <button class="btn" data-save="stop-${s.id}">Save card</button>
+          </div>
+        </div>
+        <div class="cols">
+          <div>
+            <div class="listhead"><h3>Dine</h3><span class="sc">gluten-free friendly</span></div>
+            <ul class="items">${s.dine.map(p => `<li><a href="${gplace(p.n, s)}" target="_blank" rel="noopener"><span class="nm">${esc(p.n)}</span><span class="tag">${esc(p.t)}</span><span class="ds">${esc(p.d)}</span></a></li>`).join("")}</ul>
+          </div>
+          <div>
+            <div class="listhead"><h3>Do</h3><span class="sc">what people love here</span></div>
+            <ul class="items">${s.todo.map(p => `<li><a href="${gplace(p.n, s)}" target="_blank" rel="noopener"><span class="nm">${esc(p.n)}</span><span class="ds">${esc(p.d)}</span></a></li>`).join("")}</ul>
+          </div>
+        </div>
+        <div class="essentials">
+          <div class="sc" style="color:var(--muted);font-size:11px">Nearest to the stay, live on Google Maps</div>
+          <div class="btns">${ESSENTIALS.map(([i,l,q]) => `<a class="ess" href="${gsearch(q, s.lat, s.lng)}" target="_blank" rel="noopener">${i} ${l}</a>`).join("")}</div>
+        </div>
+      </div>
+    </div></div>
+  </section>`;
+}).join("");
+
+/* ===== DASHBOARD panes ===== */
+let activeTab = store.get("cr-tab") || "plan";
+const stopsInView = () => activeStop ? STAYS.filter(s => s.id === activeStop) : STAYS;
+const grp = s => `<h3 class="grp" style="--accent:${s.c}"><i>${s.rn}</i>${esc(s.area)}</h3>`;
+const WXDATA = {};
+const WXI = c => c===0?"☀️":c<=2?"🌤️":c===3?"☁️":c<=48?"🌫️":c<=57?"🌦️":c<=67?"🌧️":c<=82?"🌦️":"⛈️";
+
+function renderPane(){
+  $$("#tabs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.tab === activeTab));
+  const P = $("#pane");
+  if (activeTab === "plan"){
+    P.innerHTML = stopsInView().map(s => {
+      const days = DAYS.filter(d => d.stay === s.id);
+      return grp(s) + `<div class="mini" style="--accent:${s.c}"><h4>${esc(s.name)}</h4>
+        <dl><dt>Host</dt><dd>${esc(s.host)}</dd><dt>In</dt><dd>${short(s.checkIn)}, ${s.inTime}</dd><dt>Out</dt><dd>${short(s.checkOut)}, ${s.outTime}</dd><dt>Address</dt><dd>${esc(s.address)}</dd></dl>
+        ${s.flag ? `<div class="flag">${esc(s.flag)}</div>` : ""}
+        <div class="btns"><a class="btn solid" href="${gdir(s.nav)}" target="_blank" rel="noopener">Directions</a><a class="btn soft" href="${s.airbnb || "https://www.airbnb.com/trips"}" target="_blank" rel="noopener">Airbnb</a><button class="btn soft" data-save="stop-${s.id}">Save card</button></div></div>` +
+        days.map(d => `<div class="daycard${d.date === today ? " today" : ""}" style="--accent:${s.c}"><span class="sc">Day ${DAYS.indexOf(d) + 1} · ${short(d.date)}</span><h4>${esc(d.title)}</h4><ul>${d.items.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>`).join("");
+    }).join("") + (activeStop ? "" : `<div class="btns" style="margin-top:14px"><button class="btn solid" data-save="itinerary">Save itinerary image</button></div>`);
+  }
+  if (activeTab === "dine"){
+    P.innerHTML = `<p style="margin:0 0 6px;color:var(--muted);font-size:16px">Gluten-free friendly, from celiac review sites. Tap for live reviews.</p>` +
+      stopsInView().map(s => grp(s) + `<ul class="items">${s.dine.map(p => `<li><a href="${gplace(p.n, s)}" target="_blank" rel="noopener"><span class="nm">${esc(p.n)}</span><span class="tag">${esc(p.t)}</span><span class="ds">${esc(p.d)}</span></a></li>`).join("")}</ul>`).join("") +
+      `<div class="btns" style="margin-top:16px"><button class="btn solid" data-save="gf">Save Spanish gluten-free card</button></div>`;
+  }
+  if (activeTab === "do"){
+    P.innerHTML = stopsInView().map(s => grp(s) + `<ul class="items">${s.todo.map(p => `<li><a href="${gplace(p.n, s)}" target="_blank" rel="noopener"><span class="nm">${p.i ? p.i + " " : ""}${esc(p.n)}</span><span class="ds">${esc(p.d)}</span></a></li>`).join("")}</ul>
+      <div class="btns" style="margin:10px 0 4px">${ESSENTIALS.map(([i,l,q]) => `<a class="ess" href="${gsearch(q, s.lat, s.lng)}" target="_blank" rel="noopener">${i} ${l}</a>`).join("")}</div>`).join("");
+  }
+  if (activeTab === "weather"){
+    P.innerHTML = stopsInView().map(s => grp(s) + `<div style="color:var(--muted);font-size:15.5px;margin-bottom:4px">November normal: ${CLIMATE[s.id]}</div>` +
+      (WXDATA[s.id] ? (WXDATA[s.id].length ? WXDATA[s.id].map(r => `<div class="wxrow"><span>${short(r.t)}</span><span class="e">${WXI(r.c)}</span><span><b>${Math.round(r.hi)}°</b> / ${Math.round(r.lo)}°F</span><span class="rain">💧${r.p ?? "–"}%</span></div>`).join("") : `<div style="font-size:15px">Forecast appears about two weeks out.</div>`) : `<div style="font-size:15px">Loading forecast…</div>`)).join("");
+  }
+  if (activeTab === "notes"){
+    P.innerHTML = stopsInView().map(s => grp(s) + `<textarea data-note="${s.id}" placeholder="Door code, wifi, what we loved...">${esc(store.get("cr-note-" + s.id))}</textarea>`).join("") +
+      `<p style="color:var(--muted);font-size:14.5px">Notes stay on this device only.</p>`;
+    $$("#pane textarea").forEach(t => t.addEventListener("input", () => store.set("cr-note-" + t.dataset.note, t.value)));
+  }
+}
+$("#tabs").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  activeTab = b.dataset.tab; store.set("cr-tab", activeTab); renderPane();
+  if (document.body.classList.contains("d-phone")) $(".side").scrollIntoView({behavior:"smooth"});
+});
+
+/* ===== weather (Open-Meteo, free, no key) ===== */
+STAYS.forEach(async s => {
+  try {
+    const u = `https://api.open-meteo.com/v1/forecast?latitude=${s.lat}&longitude=${s.lng}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&temperature_unit=fahrenheit&timezone=${encodeURIComponent(TZ)}&forecast_days=16`;
+    const j = await (await fetch(u)).json();
+    WXDATA[s.id] = j.daily.time.map((t, i) => ({t, c:j.daily.weather_code[i], hi:j.daily.temperature_2m_max[i], lo:j.daily.temperature_2m_min[i], p:j.daily.precipitation_probability_max[i]}))
+      .filter(r => r.t >= s.checkIn && r.t <= s.checkOut);
+    const rows = WXDATA[s.id];
+    if (rows.length){
+      const his = rows.map(r => Math.round(r.hi)), rain = rows.reduce((a, r) => a + (r.p || 0), 0) / rows.length;
+      const lo = Math.min(...his), hi = Math.max(...his);
+      $("#wxline-" + s.id).textContent = `Forecast: ${lo === hi ? hi : lo + " to " + hi}°F, ${rain >= 70 ? "showers likely most days" : rain >= 40 ? "some showers" : "mostly dry"}.`;
+    }
+  } catch(e){ WXDATA[s.id] = []; }
+  if (activeTab === "weather") renderPane();
+});
+
+/* ===== downloadable image cards (drawn on canvas) ===== */
+async function fontsReady(){
+  try { await Promise.all(['600 60px "Cormorant Garamond"','italic 500 40px "Cormorant Garamond"','400 30px "EB Garamond"','600 30px "EB Garamond"'].map(f => document.fonts.load(f))); } catch(e){}
+}
+function latticeFill(x, w, h, step){
+  x.fillStyle = "#f3efe6"; x.fillRect(0, 0, w, h);
+  x.strokeStyle = "#151a17"; x.lineWidth = 3;
+  for (let i = 0; i <= w; i += step){ x.beginPath(); x.moveTo(i, 0); x.lineTo(i, h); x.stroke(); }
+  for (let j = 0; j <= h; j += step){ x.beginPath(); x.moveTo(0, j); x.lineTo(w, j); x.stroke(); }
+}
+function archPath(x, ax, ay, aw, ah){
+  const r = aw / 2;
+  x.beginPath(); x.moveTo(ax, ay + ah); x.lineTo(ax, ay + r); x.arc(ax + r, ay + r, r, Math.PI, 0); x.lineTo(ax + aw, ay + ah); x.closePath();
+}
+function frame(w, h){
+  const c = document.createElement("canvas"); c.width = w; c.height = h;
+  const x = c.getContext("2d");
+  latticeFill(x, w, h, 40);
+  const m = 70;
+  archPath(x, m, m, w - 2 * m, h - 2 * m);
+  x.fillStyle = "#fbf9f4"; x.fill(); x.lineWidth = 5; x.strokeStyle = "#151a17"; x.stroke();
+  archPath(x, m + 18, m + 18, w - 2 * m - 36, h - 2 * m - 36);
+  x.lineWidth = 1.5; x.strokeStyle = "#c8963c"; x.stroke();
+  x.textAlign = "center"; x.textBaseline = "alphabetic";
+  return {c, x};
+}
+function txt(x, s, px, y, font, color, align){
+  x.font = font; x.fillStyle = color || "#151a17"; x.textAlign = align || "center"; x.fillText(s, px, y);
+}
+function wrapText(x, s, px, y, maxW, lh, font, color, align){
+  x.font = font; x.fillStyle = color || "#151a17"; x.textAlign = align || "center";
+  const words = s.split(" "); let line = "";
+  for (const w of words){
+    const t = line ? line + " " + w : w;
+    if (x.measureText(t).width > maxW && line){ x.fillText(line, px, y); y += lh; line = w; } else line = t;
+  }
+  if (line){ x.fillText(line, px, y); y += lh; }
+  return y;
+}
+const spaced = s => s.toUpperCase().split("").join(String.fromCharCode(8202));
+
+async function drawItinerary(){
+  await fontsReady();
+  const W = 1080, H = 1920, {c, x} = frame(W, H);
+  txt(x, spaced("November 4 to 15, 2026"), W/2, 470, '600 26px "EB Garamond"', "#5f645d");
+  txt(x, "Costa Rica", W/2, 580, '600 120px "Cormorant Garamond"');
+  txt(x, "five stops, eleven nights", W/2, 640, 'italic 500 42px "Cormorant Garamond"', "#5f645d");
+  let y = 760;
+  STAYS.forEach(s => {
+    x.fillStyle = s.c; x.beginPath(); x.arc(190, y + 8, 40, 0, Math.PI * 2); x.fill();
+    txt(x, s.rn, 190, y + 22, 'italic 600 40px "Cormorant Garamond"', "#fff");
+    txt(x, s.area, 260, y, '600 50px "Cormorant Garamond"', "#151a17", "left");
+    txt(x, `${short(s.checkIn)} to ${short(s.checkOut)}`, 260, y + 42, '500 29px "EB Garamond"', s.c, "left");
+    txt(x, s.name, 260, y + 80, '400 27px "EB Garamond"', "#151a17", "left");
+    txt(x, `Host ${s.host} · in ${s.inTime} · out ${s.outTime}`, 260, y + 115, '400 26px "EB Garamond"', "#5f645d", "left");
+    y += 205;
+  });
+  txt(x, "Pura vida", W/2, H - 130, 'italic 500 44px "Cormorant Garamond"', "#1d4a38");
+  return c;
+}
+async function drawStop(s){
+  await fontsReady();
+  const W = 1080, H = 1500, {c, x} = frame(W, H);
+  txt(x, spaced("Stop " + s.rn), W/2, 420, '600 26px "EB Garamond"', s.c);
+  txt(x, s.area, W/2, 510, '600 92px "Cormorant Garamond"');
+  txt(x, `${short(s.checkIn)} to ${short(s.checkOut)} · ${nights(s)} night${nights(s) > 1 ? "s" : ""}`, W/2, 565, 'italic 500 38px "Cormorant Garamond"', "#5f645d");
+  x.fillStyle = s.c; x.fillRect(W/2 - 60, 600, 120, 3);
+  txt(x, s.name, W/2, 670, '600 46px "Cormorant Garamond"');
+  let y = wrapText(x, s.address, W/2, 720, 760, 36, '400 28px "EB Garamond"', "#151a17");
+  txt(x, `Host ${s.host} · in ${s.inTime} · out ${s.outTime}`, W/2, y + 8, '500 28px "EB Garamond"', "#5f645d");
+  y += 80;
+  const col = (title, list, cx) => {
+    let yy = y;
+    txt(x, spaced(title), cx, yy, '600 26px "EB Garamond"', s.c, "left"); yy += 54;
+    list.slice(0, 6).forEach(p => { yy = wrapText(x, p.n, cx, yy, 320, 38, '500 31px "EB Garamond"', "#151a17", "left") + 16; });
+  };
+  col("Dine", s.dine, 200);
+  col("Do", s.todo, 580);
+  txt(x, "Pura vida", W/2, H - 120, 'italic 500 40px "Cormorant Garamond"', "#1d4a38");
+  return c;
+}
+async function drawGF(){
+  await fontsReady();
+  const W = 1080, H = 1500, {c, x} = frame(W, H);
+  txt(x, spaced("Para el mesero"), W/2, 420, '600 26px "EB Garamond"', "#2d4fa0");
+  txt(x, "Sin gluten,", W/2, 520, '600 96px "Cormorant Garamond"');
+  txt(x, "por favor", W/2, 610, 'italic 600 96px "Cormorant Garamond"', "#1d4a38");
+  let y = 700;
+  const es = [
+    "No puedo comer gluten: nada de trigo, cebada, centeno ni avena.",
+    "Por favor, sin harina, sin empanizar y sin salsa de soya.",
+    "Necesito que se cocine aparte: no en la misma freidora ni en la misma plancha.",
+    "¿Qué platos me recomienda que sean sin gluten?"
+  ];
+  es.forEach(s => { y = wrapText(x, s, W/2, y, 760, 46, '500 36px "EB Garamond"', "#151a17") + 18; });
+  y += 10; x.fillStyle = "#c8963c"; x.fillRect(W/2 - 60, y, 120, 3); y += 54;
+  y = wrapText(x, "I can't eat gluten (wheat, barley, rye, oats). No flour, breading or soy sauce. Please cook it separately, not in a shared fryer or on a shared grill. What do you recommend?", W/2, y, 760, 36, 'italic 400 28px "EB Garamond"', "#5f645d");
+  txt(x, "¡Muchas gracias!", W/2, H - 130, 'italic 600 46px "Cormorant Garamond"', "#1d4a38");
+  return c;
+}
+document.addEventListener("click", async e => {
+  const b = e.target.closest("[data-save]"); if (!b) return;
+  const k = b.dataset.save, label = b.textContent; b.textContent = "Drawing…";
+  let c, name;
+  if (k === "itinerary"){ c = await drawItinerary(); name = "costa-rica-itinerary.png"; }
+  else if (k === "gf"){ c = await drawGF(); name = "sin-gluten-card.png"; }
+  else { const s = STAYS.find(x => x.id === +k.split("-")[1]); c = await drawStop(s); name = `costa-rica-stop-${s.id}-${s.short.toLowerCase().replace(/\s+/g,"-")}.png`; }
+  b.textContent = label;
+  c.toBlob(blob => {
+    const url = URL.createObjectURL(blob);
+    $("#imgOut").src = url; $("#imgDl").href = url; $("#imgDl").download = name;
+    $("#imgModal").classList.remove("hidden");
+  }, "image/png");
+});
+$("#imgClose").onclick = () => $("#imgModal").classList.add("hidden");
+$("#imgModal").addEventListener("click", e => { if (e.target.id === "imgModal") $("#imgModal").classList.add("hidden"); });
+
+/* ===== start ===== */
+const cs = currentStay();
+if (cs) activeStop = 0;
+renderPane();
+if (state.view && state.device) applyView(); else { state.view = state.view || "simple"; state.device = state.device || guessDevice(); applyView(); showGate(); }
+</script>
+</body>
+</html>
