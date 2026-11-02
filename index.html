@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Costa Rica · November</title>
-<meta name="description" content="Our Costa Rica journey, November 4 to 15: five stops, where we sleep, where we eat, what we do.">
+<meta name="description" content="Costa Rica, November 4 to 15: five stops, stays, distances, safety, Wi-Fi, food and travel rules.">
 <meta name="theme-color" content="#0f2a20">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,183 +13,170 @@
 <style>
 :root{
   --lime:#f3efe6; --paper:#fbf9f4; --ink:#151a17; --muted:#5f645d; --line:#d8d1c2;
-  --ivy:#0f2a20; --emerald:#1d4a38; --sapphire:#2d4fa0; --hydr:#8ea0d8; --hydr-soft:#e4e8f6;
+  --ivy:#0f2a20; --emerald:#1d4a38; --sapphire:#2d4fa0; --hydr-soft:#e4e8f6;
   --amber:#c8963c; --lamp:#f0c56e; --garnet:#8a2d36;
   --serif:"Cormorant Garamond",Georgia,serif; --text:"EB Garamond",Georgia,serif;
-  --r:14px; --shadow:0 1px 2px rgba(21,26,23,.06),0 10px 30px rgba(21,26,23,.08);
+  --r:14px; --hdr:104px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--lime);color:var(--ink);font:18px/1.55 var(--text);-webkit-font-smoothing:antialiased}
 a{color:var(--emerald)}
-h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0;line-height:1.05;letter-spacing:.005em}
-button{font:inherit;color:inherit}
-.sc{font:600 12.5px/1 var(--text);letter-spacing:.18em;text-transform:uppercase}
-.it{font-family:var(--serif);font-style:italic}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;margin:0;line-height:1.08}
+button,input{font:inherit;color:inherit}
+.sc{font:600 12px/1.2 var(--text);letter-spacing:.16em;text-transform:uppercase}
+.muted{color:var(--muted)}
 .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-.lattice{background-color:var(--lime);
-  background-image:linear-gradient(var(--ink) 2px,transparent 2px),linear-gradient(90deg,var(--ink) 2px,transparent 2px);
-  background-size:24px 24px;background-position:-1px -1px}
+.lattice{background-color:var(--lime);background-image:linear-gradient(var(--ink) 2px,transparent 2px),linear-gradient(90deg,var(--ink) 2px,transparent 2px);background-size:24px 24px;background-position:-1px -1px}
 .hidden{display:none!important}
 
-/* ===== gate ===== */
+/* gate */
 #gate{position:fixed;inset:0;z-index:5000;display:grid;place-items:center;padding:20px;overflow:auto}
 .gate-arch{background:var(--paper);border:2px solid var(--ink);border-radius:240px 240px 6px 6px;padding:70px 34px 30px;max-width:460px;width:100%;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.25)}
 .gate-arch h1{font-size:54px}
-.gate-arch .it{font-size:21px;color:var(--muted);margin:4px 0 26px}
+.gate-arch .sub{font:500 italic 21px var(--serif);color:var(--muted);margin:4px 0 22px}
 .q{margin:18px 0 8px;color:var(--muted)}
 .seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.opt{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:12px 10px;cursor:pointer;text-align:center;transition:all .15s}
+.opt{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:12px 10px;cursor:pointer}
 .opt b{display:block;font:600 22px var(--serif)}
 .opt small{color:var(--muted);font-size:14px;line-height:1.3;display:block;margin-top:2px}
 .opt[aria-pressed="true"]{border-color:var(--emerald);background:#eef3ef;box-shadow:inset 0 0 0 1px var(--emerald)}
 .enter{margin-top:24px;width:100%;border:0;background:var(--ivy);color:#fff;border-radius:999px;padding:15px;cursor:pointer;font:600 14px var(--text);letter-spacing:.2em;text-transform:uppercase}
 
-/* ===== top bar ===== */
-.topbar{position:sticky;top:0;z-index:1500;background:var(--ivy);color:#fff}
-.topbar .wrap{display:flex;align-items:center;gap:12px;height:56px}
+/* header */
+header.top{position:sticky;top:0;z-index:1500;background:var(--ivy);color:#fff}
+.bar1{display:flex;align-items:center;gap:12px;height:56px}
 .brand{font:600 italic 26px var(--serif);white-space:nowrap}
 .brand small{font:500 14px var(--text);font-style:normal;opacity:.7;margin-left:8px;letter-spacing:.06em}
 .spacer{flex:1}
 .toggle{display:flex;background:rgba(255,255,255,.1);border-radius:999px;padding:3px}
-.toggle button{border:0;background:none;color:#fff;opacity:.75;padding:6px 13px;border-radius:999px;cursor:pointer;font:600 12px var(--text);letter-spacing:.14em;text-transform:uppercase}
+.toggle button{border:0;background:none;color:#fff;opacity:.75;padding:6px 12px;border-radius:999px;cursor:pointer;font:600 11.5px var(--text);letter-spacing:.14em;text-transform:uppercase}
 .toggle button[aria-pressed="true"]{background:var(--paper);color:var(--ivy);opacity:1}
-.devbtn{border:1px solid rgba(255,255,255,.3);background:none;color:#fff;border-radius:999px;padding:6px 11px;cursor:pointer;font:600 12px var(--text);letter-spacing:.12em;text-transform:uppercase}
+.devbtn{border:1px solid rgba(255,255,255,.3);background:none;color:#fff;border-radius:999px;padding:6px 10px;cursor:pointer;font:600 11px var(--text);letter-spacing:.12em;text-transform:uppercase}
+.bar2{display:flex;align-items:center;gap:8px;height:48px;overflow-x:auto;scrollbar-width:none;border-top:1px solid rgba(255,255,255,.12)}
+.bar2 .count{font:500 italic 17px var(--serif);color:var(--lamp);white-space:nowrap;margin-right:6px}
+.info{flex:none;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.06);color:#fff;border-radius:999px;padding:6px 13px;cursor:pointer;font:600 12px var(--text);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.info:hover{background:var(--paper);color:var(--ivy)}
 .trim{height:10px;background-size:10px 10px;background-image:linear-gradient(var(--ink) 1.5px,transparent 1.5px),linear-gradient(90deg,var(--ink) 1.5px,transparent 1.5px);background-color:var(--lime)}
-body.d-phone .brand small{display:none}
-body.d-phone .brand{font-size:22px}
-body.d-phone .topbar .wrap{gap:8px}
-body.d-phone .devbtn{padding:5px 9px;font-size:11px;letter-spacing:.08em}
 
-/* ===== buttons ===== */
+/* buttons */
 .btns{display:flex;flex-wrap:wrap;gap:8px}
-.btn{display:inline-flex;align-items:center;gap:7px;text-decoration:none;border:1.5px solid var(--ink);background:transparent;color:var(--ink);border-radius:999px;padding:8px 15px;cursor:pointer;font:600 12.5px var(--text);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;gap:6px;text-decoration:none;border:1.5px solid var(--ink);background:transparent;color:var(--ink);border-radius:999px;padding:7px 14px;cursor:pointer;font:600 12px var(--text);letter-spacing:.13em;text-transform:uppercase;white-space:nowrap}
 .btn:hover{background:var(--ink);color:#fff}
 .btn.solid{background:var(--ivy);border-color:var(--ivy);color:#fff}
 .btn.solid:hover{background:var(--emerald)}
 .btn.soft{border-color:var(--line);background:#fff}
-.btn.soft:hover{border-color:var(--ink);background:#fff;color:var(--ink)}
+.btn.soft:hover{border-color:var(--ink);color:var(--ink)}
 
-/* ===== SIMPLE ===== */
-.hero{position:relative;padding:34px 0 40px}
-.hero-grid{display:grid;grid-template-columns:1fr minmax(300px,440px) 1fr;align-items:end}
-.hero .panel{height:100%}
+/* accordions */
+details.acc{border-top:1.5px solid var(--ink)}
+details.acc:last-of-type{border-bottom:1.5px solid var(--ink)}
+details.acc>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:13px 2px;font:600 23px var(--serif)}
+details.acc>summary::-webkit-details-marker{display:none}
+details.acc>summary .n{font:600 11px var(--text);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+details.acc>summary::after{content:"+";margin-left:auto;font:400 26px var(--serif);color:var(--muted);transition:transform .2s}
+details.acc[open]>summary::after{transform:rotate(45deg)}
+details.acc .accbody{padding:0 2px 16px}
+.items{list-style:none;margin:0;padding:0}
+.items li{padding:9px 0;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:flex-start}
+.items li:last-child{border-bottom:0}
+.items .txt{flex:1;min-width:0}
+.items .nm{font-weight:600;font-size:17.5px}
+.items .ds{display:block;color:var(--muted);font-size:15.5px;line-height:1.4}
+.items .how{flex:none;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 10px;cursor:pointer;font:600 11px var(--text);letter-spacing:.1em;text-transform:uppercase;color:var(--emerald);white-space:nowrap}
+.items .how:hover{border-color:var(--emerald)}
+.tag{display:inline-block;font:600 10px var(--text);letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;border-radius:999px;background:var(--hydr-soft);color:var(--sapphire);margin-left:6px;vertical-align:2px}
+
+/* SIMPLE */
+.hero{padding:30px 0 34px}
+.hero-grid{display:grid;grid-template-columns:1fr minmax(300px,420px) 1fr;align-items:end}
 .doorway{position:relative;aspect-ratio:3/4;border:3px solid var(--ink);border-radius:999px 999px 0 0;overflow:hidden;background:#222;box-shadow:0 0 0 10px var(--lime),0 0 0 12px var(--ink)}
-.doorway img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(1.05) contrast(1.03)}
+.doorway img{width:100%;height:100%;object-fit:cover;display:block}
 .doorway::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(15,42,32,.75))}
 .doorway .cap{position:absolute;left:0;right:0;bottom:22px;text-align:center;color:#fff;z-index:2}
-.doorway .cap h1{font-size:62px;text-shadow:0 2px 20px rgba(0,0,0,.35)}
-.doorway .cap .it{font-size:21px;opacity:.95}
-.herotext{text-align:center;margin-top:30px;background:var(--lime);position:relative}
-.herotext .lede{font:500 italic 26px/1.3 var(--serif);max-width:620px;margin:0 auto 14px}
-.herotext .nowline{color:var(--muted);font-size:17px;margin-bottom:18px}
+.doorway .cap h1{font-size:60px}
+.doorway .cap div{font:500 italic 21px var(--serif)}
+.herotext{text-align:center;margin-top:28px}
+.herotext .lede{font:500 italic 25px/1.3 var(--serif);max-width:620px;margin:0 auto 18px}
 .herotext .btns{justify-content:center}
-
 .doors{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:8px 0 10px}
-.door{display:block;text-decoration:none;color:var(--ink);text-align:center;background:var(--paper);border:1.5px solid var(--ink);border-radius:999px 999px 6px 6px;padding:30px 8px 14px;transition:transform .15s}
-.door:hover{transform:translateY(-3px)}
+.door{display:block;text-decoration:none;color:var(--ink);text-align:center;background:var(--paper);border:1.5px solid var(--ink);border-radius:999px 999px 6px 6px;padding:28px 8px 14px}
 .door .num{font:600 italic 30px var(--serif)}
 .door h3{font-size:22px;margin:4px 0 2px}
 .door small{color:var(--muted);font-size:14.5px;display:block}
-
-.chapter{padding:56px 0;border-top:1px solid var(--line);scroll-margin-top:66px}
+.chapter{padding:52px 0;border-top:1px solid var(--line);scroll-margin-top:var(--hdr)}
 .chapter:nth-of-type(even){background:var(--paper)}
-.ch-grid{display:grid;grid-template-columns:minmax(260px,400px) 1fr;gap:52px;align-items:start}
-.chapter:nth-of-type(even) .ch-grid{grid-template-columns:1fr minmax(260px,400px)}
-.chapter:nth-of-type(even) .ch-photo{order:2}
-.ch-photo{position:sticky;top:90px}
+.ch-grid{display:grid;grid-template-columns:minmax(260px,380px) 1fr;gap:50px;align-items:start}
 .ch-photo .doorway{aspect-ratio:4/5}
 .ch-photo .credit{font-size:13px;color:var(--muted);text-align:center;margin-top:16px}
 .ch-photo .credit a{color:var(--muted)}
 .ch-head .numeral{font:600 italic 22px var(--serif);color:var(--accent)}
-.ch-head h2{font-size:56px;margin:2px 0 6px}
+.ch-head h2{font-size:54px;margin:2px 0 6px}
 .ch-head .dates{font:500 italic 22px var(--serif);color:var(--muted)}
-.stay-box{margin:22px 0;border:1.5px solid var(--ink);border-radius:var(--r);background:#fff;padding:18px 20px;position:relative}
+.stay-box{margin:20px 0;border:1.5px solid var(--ink);border-radius:var(--r);background:#fff;padding:18px 20px 18px 26px;position:relative}
 .stay-box::before{content:"";position:absolute;left:-1.5px;top:-1.5px;bottom:-1.5px;width:7px;background:var(--accent);border-radius:var(--r) 0 0 var(--r)}
-.stay-box h3{font-size:27px}
-.stay-box dl{display:grid;grid-template-columns:auto 1fr;gap:3px 16px;margin:10px 0 14px;font-size:17px}
-.stay-box dt{color:var(--muted)}
-.stay-box dd{margin:0}
-.stay-box .note{font-size:16.5px;color:#3c423d;margin-bottom:14px}
-.flag{font-size:15px;background:#fbf3df;border-left:3px solid var(--amber);padding:6px 10px;margin:-4px 0 14px;border-radius:0 8px 8px 0}
-.wxline{font:500 italic 19px var(--serif);color:var(--sapphire);margin:-6px 0 4px}
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:24px}
-.listhead{display:flex;align-items:baseline;gap:10px;border-bottom:1.5px solid var(--ink);padding-bottom:6px;margin-bottom:10px}
-.listhead h3{font-size:26px}
-.listhead .sc{color:var(--muted);font-size:11px}
-.items{list-style:none;margin:0;padding:0}
-.items li{padding:9px 0;border-bottom:1px solid var(--line)}
-.items a{text-decoration:none;color:var(--ink)}
-.items a:hover .nm{color:var(--emerald);text-decoration:underline}
-.items .nm{font-weight:600;font-size:18px}
-.items .ds{display:block;color:var(--muted);font-size:16px;line-height:1.4}
-.tag{display:inline-block;font:600 10.5px var(--text);letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;border-radius:999px;background:var(--hydr-soft);color:var(--sapphire);margin-left:6px;vertical-align:2px}
-.tag.gold{background:#f6ead0;color:#7a5410}
-.essentials{margin-top:24px}
-.essentials .btns{margin-top:8px}
-.ess{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-size:15.5px;text-decoration:none;color:var(--ink)}
-.ess:hover{border-color:var(--ink)}
+.stay-box h3{font-size:26px}
+dl.kv{display:grid;grid-template-columns:auto 1fr;gap:3px 16px;margin:10px 0 12px;font-size:16.5px}
+dl.kv dt{color:var(--muted)} dl.kv dd{margin:0}
+.flag{font-size:15px;background:#fbf3df;border-left:3px solid var(--amber);padding:6px 10px;margin:4px 0 12px;border-radius:0 8px 8px 0}
+.wxline{font:500 italic 19px var(--serif);color:var(--sapphire);margin:2px 0 10px}
 
-.closing{padding:60px 0}
-.closing .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.cardx{background:#fff;border:1.5px solid var(--ink);border-radius:var(--r);padding:20px}
-.cardx h3{font-size:26px;margin-bottom:8px}
-.cardx ul{margin:0;padding-left:18px}
-.cardx li{margin:5px 0;font-size:16.5px}
-details{border-top:1px solid var(--line);padding:10px 0}
-summary{cursor:pointer;font:600 22px var(--serif)}
-footer{text-align:center;color:var(--muted);font-size:14.5px;padding:30px 20px 60px}
-
-/* ===== DASHBOARD ===== */
-#dash{display:grid;grid-template-columns:1fr 440px;height:calc(100vh - 66px);height:calc(100dvh - 66px)}
+/* DASHBOARD */
+#dash{display:grid;grid-template-columns:1fr 460px;height:calc(100vh - var(--hdr) - 10px);height:calc(100dvh - var(--hdr) - 10px)}
 #dashMapSlot{position:relative;min-height:0}
 #dashMapSlot #map{position:absolute;inset:0}
-.side{background:var(--paper);border-left:2px solid var(--ink);display:flex;flex-direction:column;min-height:0}
-.stops{display:flex;gap:6px;overflow-x:auto;padding:12px 14px;border-bottom:1px solid var(--line);scrollbar-width:none}
+.side{background:var(--paper);border-left:2px solid var(--ink);overflow-y:auto;padding:0 18px 40px}
+.stops{display:flex;gap:6px;overflow-x:auto;padding:12px 0;scrollbar-width:none;position:sticky;top:0;background:var(--paper);z-index:3;border-bottom:1px solid var(--line)}
 .stop{flex:none;border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:5px 12px;cursor:pointer;font-size:16px;display:flex;gap:6px;align-items:center}
 .stop i{font:600 italic 17px var(--serif);color:var(--accent)}
 .stop[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:#fff}
 .stop[aria-pressed="true"] i{color:var(--lamp)}
-.tabs{display:flex;border-bottom:1.5px solid var(--ink)}
-.tabs button{flex:1;border:0;background:none;padding:12px 4px;cursor:pointer;font:600 12px var(--text);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-1.5px}
-.tabs button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--amber)}
-.pane{overflow-y:auto;padding:16px 18px 30px;flex:1}
-.pane h3.grp{font-size:25px;margin:18px 0 6px;display:flex;align-items:center;gap:8px}
-.pane h3.grp:first-child{margin-top:0}
-.pane h3.grp i{font-size:18px;color:var(--accent)}
-.daycard{border-left:4px solid var(--accent);background:#fff;border-radius:0 10px 10px 0;padding:10px 14px;margin-bottom:10px}
+.staycard{margin:14px 0 6px;border:1.5px solid var(--ink);border-radius:var(--r);background:#fff;padding:14px 16px 14px 22px;position:relative}
+.staycard::before{content:"";position:absolute;left:-1.5px;top:-1.5px;bottom:-1.5px;width:6px;background:var(--accent);border-radius:var(--r) 0 0 var(--r)}
+.staycard .sc{color:var(--accent)}
+.staycard h3{font-size:25px;margin:3px 0 0}
+.tool{margin:16px 0;background:var(--ivy);color:#fff;border-radius:var(--r);padding:16px}
+.tool h3{font-size:24px}
+.tool .muted{color:rgba(255,255,255,.7);font-size:15px;margin:2px 0 10px}
+.searchrow{display:flex;gap:6px}
+.searchrow input{flex:1;min-width:0;border:0;border-radius:999px;padding:10px 16px;font-size:17px;background:#fff;color:var(--ink)}
+.searchrow button{border:0;border-radius:999px;padding:0 16px;background:var(--lamp);color:var(--ink);cursor:pointer;font:600 12px var(--text);letter-spacing:.13em;text-transform:uppercase}
+.cats{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.cat{border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.07);color:#fff;border-radius:999px;padding:5px 11px;cursor:pointer;font-size:15px}
+.cat:hover,.cat[aria-pressed="true"]{background:var(--paper);color:var(--ink)}
+#results{margin-top:12px}
+.res{display:flex;justify-content:space-between;gap:10px;width:100%;text-align:left;border:0;border-top:1px solid rgba(255,255,255,.14);background:none;color:#fff;padding:9px 2px;cursor:pointer;font-size:16px}
+.res:hover{color:var(--lamp)}
+.res small{color:rgba(255,255,255,.65);white-space:nowrap}
+.routecard{margin-top:12px;background:var(--paper);color:var(--ink);border-radius:12px;padding:12px 14px}
+.routecard h4{font-size:22px;margin-bottom:6px}
+.legs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0 10px}
+.leg{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:#fff}
+.leg b{font:600 24px var(--serif);display:block}
+.leg span{font-size:14px;color:var(--muted)}
+.leg.walk{border-left:4px solid #1d5e45} .leg.drive{border-left:4px solid var(--sapphire)}
+.statusline{font-size:15px;color:rgba(255,255,255,.75);margin-top:8px}
+.daycard{border-left:4px solid var(--accent);background:#fff;border-radius:0 10px 10px 0;padding:9px 13px;margin-bottom:8px}
 .daycard.today{box-shadow:0 0 0 2px var(--amber)}
-.daycard .sc{color:var(--muted);font-size:11px}
-.daycard h4{font:600 21px var(--serif);margin:3px 0 2px}
-.daycard ul{margin:4px 0 0;padding-left:18px;font-size:16px}
-.mini{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px}
-.mini h4{font:600 22px var(--serif);margin:0 0 4px}
-.mini dl{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;margin:6px 0 10px;font-size:16px}
-.mini dt{color:var(--muted)} .mini dd{margin:0}
+.daycard h4{font-size:20px;margin:2px 0}
+.daycard ul{margin:3px 0 0;padding-left:18px;font-size:15.5px}
 .wxrow{display:grid;grid-template-columns:1fr auto auto auto;gap:12px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line);font-size:16px}
-.wxrow .e{font-size:19px}
 .wxrow .rain{color:var(--sapphire);font-size:14px;font-weight:600;min-width:46px;text-align:right}
 textarea{width:100%;min-height:80px;border:1px solid var(--line);border-radius:10px;padding:9px 11px;font:16px var(--text);background:#fffdf8;resize:vertical}
-.note-lbl{font:600 20px var(--serif);margin:12px 0 4px}
 
-/* phone dashboard */
-body.d-phone #dash{display:flex;flex-direction:column;height:auto}
-body.d-phone #dashMapSlot{height:52vh;height:52dvh;position:sticky;top:66px;z-index:1}
-body.d-phone .side{border-left:0;border-top:2px solid var(--ink);position:relative;z-index:2;min-height:60vh}
-body.d-phone .tabs{position:fixed;bottom:0;left:0;right:0;z-index:1600;background:var(--ivy);border:0;padding-bottom:env(safe-area-inset-bottom)}
-body.d-phone .tabs button{color:rgba(255,255,255,.65);padding:14px 2px;border-bottom:0;border-top:3px solid transparent;margin:0}
-body.d-phone .tabs button[aria-pressed="true"]{color:#fff;border-top-color:var(--lamp)}
-body.d-phone .pane{padding-bottom:90px;overflow:visible}
+body.d-phone #dash{display:block;height:auto}
+body.d-phone #dashMapSlot{height:46vh;height:46dvh;position:sticky;top:calc(var(--hdr) + 10px);z-index:1}
+body.d-phone .side{border-left:0;border-top:2px solid var(--ink);position:relative;z-index:2;overflow:visible;padding-bottom:60px}
+body.d-phone .stops{top:calc(var(--hdr) + 10px)}
 
-/* ===== map ===== */
+/* map */
 #map{background:#e8e4da}
 #mapOverlay{position:fixed;inset:0;z-index:4000;background:var(--ivy);display:flex;flex-direction:column}
-#mapOverlay .bar{display:flex;align-items:center;gap:10px;padding:10px 14px;color:#fff}
-#mapOverlay .bar .stops{border:0;padding:0;flex:1}
-#mapOverlay .bar .stop{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#fff}
-#mapOverlay .bar .stop i{color:var(--lamp)}
-#mapOverlay .bar .stop[aria-pressed="true"]{background:var(--paper);color:var(--ink)}
-#mapOverlay .bar .stop[aria-pressed="true"] i{color:var(--accent)}
+#mapOverlay .ov{display:flex;align-items:center;gap:10px;padding:10px 14px}
+#mapOverlay .stops{background:none;border:0;padding:0;flex:1;position:static}
+#mapOverlay .stop{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);color:#fff}
+#mapOverlay .stop i{color:var(--lamp)}
+#mapOverlay .stop[aria-pressed="true"]{background:var(--paper);color:var(--ink)}
 #overlaySlot{flex:1;position:relative}
 #overlaySlot #map{position:absolute;inset:0}
 .closebtn{border:1.5px solid #fff;background:none;color:#fff;border-radius:999px;padding:7px 14px;cursor:pointer;font:600 12px var(--text);letter-spacing:.14em;text-transform:uppercase;flex:none}
@@ -199,105 +186,112 @@ body.d-phone .pane{padding-bottom:90px;overflow:visible}
 .leaflet-popup-content{font:16px/1.45 var(--text);margin:12px 16px}
 .leaflet-popup-content b.t{font:600 21px var(--serif);display:block}
 .leaflet-popup-content a{font-weight:600}
-.mapbtn{background:var(--paper);border:2px solid rgba(0,0,0,.2);border-radius:8px;padding:8px 12px;cursor:pointer;font:600 12px var(--text);letter-spacing:.12em;text-transform:uppercase}
+.maphint{position:absolute;left:50%;top:12px;transform:translateX(-50%);z-index:500;background:rgba(251,249,244,.95);border:1.5px solid var(--ink);border-radius:999px;padding:5px 14px;font-size:14.5px;pointer-events:none;white-space:nowrap}
+.mapall{position:absolute;left:12px;top:12px;z-index:500}
 .spin{width:38px;height:48px;position:relative}
 .spin .arch{position:absolute;inset:0 4px 10px;border-radius:999px 999px 4px 4px;border:2.5px solid #fff;box-shadow:0 3px 10px rgba(0,0,0,.4);display:grid;place-items:center;color:#fff;font:600 italic 17px "Cormorant Garamond",serif;padding-top:3px}
 .spin::after{content:"";position:absolute;left:50%;bottom:2px;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:var(--ink);border:2px solid #fff}
 .dot{width:24px;height:24px;border-radius:50%;background:var(--paper);border:2px solid var(--c);display:grid;place-items:center;font-size:13px;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.dest{width:22px;height:22px;border-radius:50%;background:var(--lamp);border:3px solid var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.hit{width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid var(--sapphire)}
 
-/* ===== image modal ===== */
+/* sheets */
+#sheet{position:fixed;inset:0;z-index:4500;background:rgba(15,42,32,.6);display:flex;align-items:flex-end;justify-content:center}
+#sheet .panel{background:var(--paper);width:100%;max-width:680px;max-height:88vh;max-height:88dvh;overflow-y:auto;border:2px solid var(--ink);border-bottom:0;border-radius:220px 220px 0 0;padding:64px 28px 40px}
+#sheet .head{text-align:center;margin-bottom:16px}
+#sheet .head h2{font-size:44px}
+#sheet .head .sub{font:500 italic 19px var(--serif);color:var(--muted)}
+#sheet h3{font-size:24px;margin:18px 0 6px}
+#sheet ul{margin:0;padding-left:20px} #sheet li{margin:5px 0;font-size:16.5px}
+#sheet .close{position:fixed;top:14px;right:14px;z-index:2;background:#fff}
+.wifi{border:1px solid var(--line);background:#fff;border-radius:12px;padding:12px 14px;margin:8px 0}
+.wifi h4{font-size:20px;margin-bottom:6px}
+.wifi input{width:100%;border:1px solid var(--line);border-radius:8px;padding:7px 10px;margin:3px 0;font-size:16px;background:#fffdf8}
+.phr td{padding:3px 12px 3px 0;vertical-align:top;font-size:16px} .phr td:first-child{font-weight:600}
+
 #imgModal{position:fixed;inset:0;z-index:6000;background:rgba(15,42,32,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;gap:14px}
-#imgModal img{max-width:min(92vw,520px);max-height:72vh;border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,.5);background:#fff}
+#imgModal img{max-width:min(92vw,520px);max-height:72vh;border-radius:6px;background:#fff}
 #imgModal p{color:#fff;opacity:.85;margin:0;text-align:center;font-size:16px}
 #imgModal .btn{border-color:#fff;color:#fff}
 #imgModal .btn.solid{background:var(--lamp);border-color:var(--lamp);color:var(--ink)}
+footer{text-align:center;color:var(--muted);font-size:14.5px;padding:30px 20px 60px}
 
-/* ===== responsive: phone device or narrow screens ===== */
 @media (max-width:900px){
-  .hero-grid{grid-template-columns:1fr}
-  .hero .panel{display:none}
-  .ch-grid,.chapter:nth-of-type(even) .ch-grid{grid-template-columns:1fr;gap:26px}
-  .chapter:nth-of-type(even) .ch-photo{order:0}
-  .ch-photo{position:static}
-  .closing .grid{grid-template-columns:1fr}
+  .hero-grid{grid-template-columns:1fr} .hero .panel{display:none}
+  .ch-grid{grid-template-columns:1fr;gap:24px}
   #dash{grid-template-columns:1fr 380px}
 }
-@media (max-width:700px){
-  .doors{grid-template-columns:1fr}
-  .cols{grid-template-columns:1fr;gap:20px}
-}
+@media (max-width:700px){ .doors{grid-template-columns:1fr} }
 body.d-phone{font-size:17.5px}
-body.d-phone .hero-grid{grid-template-columns:1fr}
-body.d-phone .hero .panel{display:none}
-body.d-phone .doorway .cap h1{font-size:50px}
-body.d-phone .herotext .lede{font-size:23px}
+body.d-phone .brand{font-size:22px} body.d-phone .brand small{display:none}
+body.d-phone .bar1{gap:6px}
+body.d-phone .toggle button{padding:6px 9px;font-size:10.5px;letter-spacing:.08em}
+body.d-phone .devbtn{padding:5px 8px;font-size:10.5px;letter-spacing:.06em}
+body.d-phone .hero-grid{grid-template-columns:1fr} body.d-phone .hero .panel{display:none}
+body.d-phone .doorway .cap h1{font-size:48px}
 body.d-phone .doors{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;padding-bottom:6px;scrollbar-width:none}
-body.d-phone .door{flex:0 0 150px;scroll-snap-align:start;padding-top:24px}
-body.d-phone .ch-grid,body.d-phone .chapter:nth-of-type(even) .ch-grid{grid-template-columns:1fr;gap:22px}
-body.d-phone .chapter:nth-of-type(even) .ch-photo{order:0}
-body.d-phone .ch-photo{position:static}
-body.d-phone .ch-photo .doorway{aspect-ratio:1/1;max-width:340px;margin:0 auto}
-body.d-phone .ch-head{text-align:center}
-body.d-phone .ch-head h2{font-size:46px}
-body.d-phone .chapter{padding:40px 0}
-body.d-phone .cols{grid-template-columns:1fr;gap:22px}
-body.d-phone .closing .grid{grid-template-columns:1fr}
-body.d-phone .btn{padding:10px 15px}
-body.d-phone .toggle button{padding:6px 10px;font-size:11px;letter-spacing:.1em}
+body.d-phone .door{flex:0 0 150px;scroll-snap-align:start}
+body.d-phone .ch-grid{grid-template-columns:1fr;gap:20px}
+body.d-phone .ch-photo .doorway{aspect-ratio:1/1;max-width:320px;margin:0 auto}
+body.d-phone .ch-head{text-align:center} body.d-phone .ch-head h2{font-size:44px}
 body.d-phone .wrap{padding:0 16px}
+body.d-phone #sheet .panel{border-radius:160px 160px 0 0;padding:56px 18px 36px}
+body.d-phone #sheet .head h2{font-size:38px}
 </style>
 </head>
 <body>
 
-<!-- ============ GATE ============ -->
 <div id="gate" class="lattice hidden">
   <div class="gate-arch">
-    <div class="sc" style="color:var(--muted)">November 4 to 15</div>
+    <div class="sc muted">November 4 to 15, 2026</div>
     <h1>Costa Rica</h1>
-    <div class="it">five stops, eleven nights</div>
-    <div class="q sc">You're on a</div>
+    <div class="sub">five stops, eleven nights</div>
+    <div class="q sc">Viewing on a</div>
     <div class="seg" data-group="device">
       <button class="opt" data-val="phone"><b>Phone</b><small>Big buttons, one thing at a time</small></button>
       <button class="opt" data-val="desktop"><b>Desktop</b><small>Wide map, side by side</small></button>
     </div>
-    <div class="q sc">Show me</div>
+    <div class="q sc">Show</div>
     <div class="seg" data-group="view">
       <button class="opt" data-val="simple"><b>Simple</b><small>The journey, stop by stop</small></button>
-      <button class="opt" data-val="dashboard"><b>Dashboard</b><small>Map, plans, weather, notes</small></button>
+      <button class="opt" data-val="dashboard"><b>Dashboard</b><small>Map tool, distances, plans</small></button>
     </div>
     <button class="enter" id="enter">Enter</button>
   </div>
 </div>
 
-<!-- ============ TOP BAR ============ -->
-<header class="topbar">
-  <div class="wrap">
+<header class="top">
+  <div class="wrap bar1">
     <div class="brand">Costa Rica <small>Nov 4 to 15</small></div>
     <div class="spacer"></div>
-    <div class="toggle" id="viewToggle">
-      <button data-val="simple">Simple</button>
-      <button data-val="dashboard">Dashboard</button>
-    </div>
-    <button class="devbtn" id="devBtn" title="Switch phone or desktop layout">Desktop</button>
+    <div class="toggle" id="viewToggle"><button data-val="simple">Simple</button><button data-val="dashboard">Dashboard</button></div>
+    <button class="devbtn" id="devBtn">Desktop</button>
+  </div>
+  <div class="wrap bar2">
+    <span class="count" id="count"></span>
+    <button class="info" data-sheet="safety">Safety</button>
+    <button class="info" data-sheet="wifi">Wi-Fi</button>
+    <button class="info" data-sheet="food">Food</button>
+    <button class="info" data-sheet="rules">Travel rules</button>
+    <button class="info" data-sheet="money">Money</button>
   </div>
 </header>
 <div class="trim"></div>
 
-<!-- ============ SIMPLE ============ -->
+<!-- SIMPLE -->
 <main id="simple">
   <section class="hero">
     <div class="wrap">
       <div class="hero-grid">
-        <div class="panel lattice" style="border-radius:999px 0 0 0"></div>
+        <div class="panel lattice" style="border-radius:999px 0 0 0;height:100%"></div>
         <div class="doorway">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Arenal_volcano_%2870785p%29_%28cropped%29.jpg/1280px-Arenal_volcano_%2870785p%29_%28cropped%29.jpg" alt="Arenal Volcano above green pasture">
-          <div class="cap"><h1>Costa Rica</h1><div class="it">November 4 to 15, 2026</div></div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Arenal_volcano_%2870785p%29_%28cropped%29.jpg/1280px-Arenal_volcano_%2870785p%29_%28cropped%29.jpg" alt="Arenal Volcano">
+          <div class="cap"><h1>Costa Rica</h1><div>November 4 to 15, 2026</div></div>
         </div>
-        <div class="panel lattice" style="border-radius:0 999px 0 0"></div>
+        <div class="panel lattice" style="border-radius:0 999px 0 0;height:100%"></div>
       </div>
       <div class="herotext">
-        <p class="lede">From the Central Valley to the volcano, up into the cloud forest and down to the Pacific.</p>
-        <div class="nowline" id="nowline"></div>
+        <p class="lede">The Central Valley, Arenal Volcano, the Monteverde cloud forest and the Pacific coast at Manuel Antonio.</p>
         <div class="btns">
           <button class="btn solid" data-openmap="0">Open the map</button>
           <button class="btn" data-save="itinerary">Save itinerary image</button>
@@ -305,69 +299,36 @@ body.d-phone .wrap{padding:0 16px}
       </div>
     </div>
   </section>
-
   <section class="wrap"><nav class="doors" id="doors"></nav></section>
   <div id="chapters"></div>
-
-  <section class="closing" id="before">
-    <div class="wrap">
-      <div class="grid">
-        <div class="cardx">
-          <h3>Before we go</h3>
-          <ul>
-            <li><b>Manuel Antonio park tickets</b> for Fri Nov 13, online only through <a href="https://serviciosenlinea.sinac.go.cr/" target="_blank" rel="noopener">SINAC</a>. Our tour is included, the $18 entry is not.</li>
-            <li><b>Monteverde Reserve</b>: book a 7 AM entry with a guide.</li>
-            <li>Download offline Google Maps for Costa Rica and install Waze.</li>
-            <li>Save the itinerary image to your phone in case signal drops.</li>
-          </ul>
-        </div>
-        <div class="cardx">
-          <h3>Eating gluten free</h3>
-          <ul>
-            <li>Naturally safe staples: corn tortillas, rice and beans, gallo pinto, grilled fish, plantains, fresh fruit.</li>
-            <li>Ask about sauces, breading and shared fryers every time.</li>
-            <li>Restaurant listings below come from celiac review sites. Recent reviews beat old ones; confirm with the server.</li>
-          </ul>
-          <div class="btns" style="margin-top:12px"><button class="btn solid" data-save="gf">Save Spanish card</button></div>
-        </div>
-        <div class="cardx">
-          <h3>On the road</h3>
-          <ul>
-            <li>Sunset is about 5:15 PM. Arrive before dark every drive day.</li>
-            <li>Gas is full service: <span class="it">"lleno con regular, por favor."</span></li>
-            <li>Nothing visible in the car, ever.</li>
-            <li>Bills include 10% service. Emergency: 911.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-  <footer>Photographs from Wikimedia Commons, credited under each. Map pins are approximate; use the Directions buttons. Pura vida.</footer>
+  <footer>Photographs from Wikimedia Commons, credited under each. Map pins are approximate. Pura vida.</footer>
 </main>
 
-<!-- ============ DASHBOARD ============ -->
+<!-- DASHBOARD -->
 <main id="dash" class="hidden">
   <div id="dashMapSlot"></div>
-  <aside class="side">
+  <aside class="side" id="side">
     <div class="stops" id="dashStops"></div>
-    <div class="tabs" id="tabs">
-      <button data-tab="plan">Plan</button>
-      <button data-tab="dine">Dine</button>
-      <button data-tab="do">Do</button>
-      <button data-tab="weather">Weather</button>
-      <button data-tab="notes">Notes</button>
+    <div id="stayCard"></div>
+    <div class="tool">
+      <h3>How far from the stay?</h3>
+      <div class="muted">Search a place, pick a category, or tap anywhere on the map. Walking and driving times are measured from the Airbnb.</div>
+      <form class="searchrow" id="searchForm"><input id="q" type="search" placeholder="Waterfall, supermarket, address..." autocomplete="off"><button>Search</button></form>
+      <div class="cats" id="cats"></div>
+      <div id="results"></div>
+      <div id="routeCard"></div>
     </div>
-    <div class="pane" id="pane"></div>
+    <div id="accs"></div>
   </aside>
 </main>
 
-<!-- ============ MAP OVERLAY (simple view) ============ -->
 <div id="mapOverlay" class="hidden">
-  <div class="bar"><div class="stops" id="overlayStops"></div><button class="closebtn" id="closeMap">Close</button></div>
+  <div class="ov"><div class="stops" id="overlayStops"></div><button class="closebtn" id="closeMap">Close</button></div>
   <div id="overlaySlot"><div id="map"></div></div>
 </div>
 
-<!-- ============ IMAGE MODAL ============ -->
+<div id="sheet" class="hidden"><div class="panel" id="sheetPanel"></div></div>
+
 <div id="imgModal" class="hidden">
   <img id="imgOut" alt="Saved card">
   <p>On iPhone: press and hold the image, then <b>Save to Photos</b>.</p>
@@ -378,7 +339,6 @@ body.d-phone .wrap{padding:0 16px}
 <script>
 /* ================================================================
    TRIP DATA. Add Airbnb links in `airbnb`, fix pins in lat/lng.
-   tags on dining: what celiac review sites say. Always confirm.
    ================================================================ */
 const STAYS = [
   {
@@ -386,18 +346,19 @@ const STAYS = [
     name:"The Dragonfly Garden", checkIn:"2026-11-04", checkOut:"2026-11-05", inTime:"3 PM", outTime:"11 AM",
     host:"Carol", address:"Plaza Real Alajuela, Avenida 10, Jesús Ocaña Rojas, Alajuela 20101",
     nav:"Plaza Real Alajuela, Alajuela, Costa Rica", lat:10.0105, lng:-84.2095, airbnb:"",
-    note:"Arrival night, minutes from the airport. Dinner, groceries for the week, early night.",
+    note:"Arrival night, minutes from the airport.",
+    hospital:"Hospital San Rafael de Alajuela",
     photo:{src:"https://upload.wikimedia.org/wikipedia/commons/d/d6/Alajuela%2C_Costa_Rica_-_Night_Skyline.png", page:"https://commons.wikimedia.org/wiki/File:Alajuela,_Costa_Rica_-_Night_Skyline.png", alt:"Alajuela at night"},
     dine:[
-      {n:"Ruta 3", d:"Gluten-free café listed in Alajuela (Copa Blanca). Confirm hours before going.", t:"GF café"},
-      {n:"Hooligan's Plaza Tropicana", d:"Relaxed pub with a gluten-free menu, including pizza and pasta.", t:"GF menu"},
-      {n:"Rosti City Mall Alajuela", d:"Rotisserie chicken, easy first-night dinner. Gluten-free menu listed.", t:"GF menu"}
+      {n:"Ruta 3", d:"Gluten-free café listed in Alajuela (Copa Blanca). Confirm hours.", t:"GF café"},
+      {n:"Hooligan's Plaza Tropicana", d:"Pub with a gluten-free menu, including pizza and pasta.", t:"GF menu"},
+      {n:"Rosti City Mall Alajuela", d:"Rotisserie chicken. Gluten-free menu listed.", t:"GF menu"}
     ],
     todo:[
-      {n:"Parque Central and the Cathedral", d:"The 'mango park'. Evening stroll five minutes away."},
-      {n:"Mercado Central de Alajuela", d:"Fruit, cheese and coffee on Thursday morning before checkout."},
-      {n:"Doka Estate coffee tour", d:"Working coffee farm 30 min north. Optional Thursday 9 AM tour.", lat:10.093, lng:-84.256, i:"☕"},
-      {n:"Poás Volcano", d:"Optional and only with an early start. Crater clouds over by 10 AM.", lat:10.1978, lng:-84.2306, i:"🌋"}
+      {n:"Parque Central de Alajuela", d:"The 'mango park' and cathedral."},
+      {n:"Mercado Central de Alajuela", d:"Fruit, cheese and coffee. Thursday morning."},
+      {n:"Doka Estate", d:"Working coffee farm, 30 min north. Optional 9 AM tour.", lat:10.093, lng:-84.256, i:"☕"},
+      {n:"Poás Volcano National Park", d:"Optional, early start. Clouds by 10 AM.", lat:10.1978, lng:-84.2306, i:"🌋"}
     ]
   },
   {
@@ -405,25 +366,26 @@ const STAYS = [
     name:"Elite View Casita 06", checkIn:"2026-11-05", checkOut:"2026-11-09", inTime:"3 PM", outTime:"11 AM",
     host:"German", address:"100 m from the cemetery, San Carlos, Alajuela",
     nav:"La Fortuna, San Carlos, Costa Rica", lat:10.4678, lng:-84.6427, airbnb:"", approx:true,
-    note:"Gated casita with views of Arenal, and Tenorio on clear days. Four nights: the adventure base.",
-    flag:"The pin shows the Arenal area, not the casita. Use the exact pin in the Airbnb app.",
+    note:"Gated casita with views of Arenal, and Tenorio on clear days.",
+    flag:"Pin shows the Arenal area, not the casita, so distances here are approximate. The Airbnb app has the exact pin.",
+    hospital:"Hospital San Carlos, Ciudad Quesada",
     photo:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Arenal_volcano_%2870785p%29_%28cropped%29.jpg/1280px-Arenal_volcano_%2870785p%29_%28cropped%29.jpg", page:"https://commons.wikimedia.org/wiki/File:Arenal_volcano_(70785p)_(cropped).jpg", alt:"Arenal Volcano"},
     dine:[
       {n:"Don Rufino", d:"La Fortuna's dress-up dinner. Reviewers mark it celiac friendly.", t:"Celiac friendly"},
       {n:"Organico Fortuna", d:"Healthy café a celiac reviewer called a standout.", t:"GF options"},
-      {n:"El Chante Verde", d:"Plant-based, on the gluten-free top lists for La Fortuna.", t:"GF options"},
-      {n:"Arenal Springs Resort", d:"Four restaurants; a celiac guest said every server understood.", t:"Celiac aware"}
+      {n:"El Chante Verde", d:"Plant-based, on the gluten-free top lists.", t:"GF options"},
+      {n:"Arenal Springs Resort", d:"Four restaurants; staff described as celiac aware.", t:"Celiac aware"}
     ],
     todo:[
-      {n:"La Fortuna Waterfall", d:"500 steps down to a 70 m fall you can swim at. Go at 7 AM.", lat:10.4446, lng:-84.6762, i:"💦"},
-      {n:"Arenal Volcano National Park", d:"Easy lava-field trails under the cone. SINAC tickets.", lat:10.4626, lng:-84.7032, i:"🌋"},
-      {n:"Místico Hanging Bridges", d:"Rainforest canopy walk. Morning for birds.", lat:10.5021, lng:-84.7616, i:"🌉"},
-      {n:"Hot springs", d:"Tabacón is the splurge; Baldi is lively; the free hot river is where locals go.", lat:10.4920, lng:-84.7240, i:"♨️"},
-      {n:"Rainforest Chocolate Tour", d:"Bean to bar in 90 minutes. Good rainy afternoon.", lat:10.4735, lng:-84.6560, i:"🍫"},
+      {n:"La Fortuna Waterfall", d:"500 steps to a 70 m fall you can swim at. Open 7 AM.", lat:10.4446, lng:-84.6762, i:"💦"},
+      {n:"Arenal Volcano National Park", d:"Lava-field trails under the cone. SINAC tickets.", lat:10.4626, lng:-84.7032, i:"🌋"},
+      {n:"Místico Arenal Hanging Bridges", d:"Rainforest canopy walk. Mornings for birds.", lat:10.5021, lng:-84.7616, i:"🌉"},
+      {n:"Tabacón Hot Springs", d:"The splurge. Baldi is livelier; the free hot river is nearby.", lat:10.4920, lng:-84.7240, i:"♨️"},
+      {n:"Rainforest Chocolate Tour", d:"Bean to bar in 90 minutes.", lat:10.4735, lng:-84.6560, i:"🍫"},
       {n:"North Fields Café", d:"Coffee, cacao and sugar cane farm tour.", lat:10.4785, lng:-84.6620, i:"☕"},
-      {n:"Río Celeste, Tenorio Volcano", d:"The impossibly blue river. Full day; ask German about the drive.", lat:10.7130, lng:-84.9930, i:"💎"},
-      {n:"White-water rafting, Río Balsa", d:"Class II to III, half day, very popular from La Fortuna."},
-      {n:"Lake Arenal kayak or paddleboard", d:"Calm mornings with the volcano behind you."}
+      {n:"Río Celeste, Tenorio Volcano National Park", d:"The blue river. A full day.", lat:10.7130, lng:-84.9930, i:"💎"},
+      {n:"Río Balsa rafting", d:"Class II to III, half day."},
+      {n:"Lake Arenal kayak", d:"Calm mornings, volcano behind."}
     ]
   },
   {
@@ -431,46 +393,48 @@ const STAYS = [
     name:"Eco Forest Dome", checkIn:"2026-11-09", checkOut:"2026-11-12", inTime:"3 PM", outTime:"11 AM",
     host:"Harry", address:"200 m north of Escuela de Los Llanos, road to Monteverde (Route 606)",
     nav:"Escuela Los Llanos, Monteverde, Costa Rica", lat:10.2935, lng:-84.8395, airbnb:"",
-    note:"Navigate to the Los Llanos school, then 200 m north. Cool, misty and windy: bring the fleece. Fill the tank before the climb.",
+    note:"Navigate to the Los Llanos school, then 200 m north. Cool, misty and windy.",
+    hospital:"Clínica Santa Elena, Monteverde",
     photo:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Monteverde_bosque.jpg/1280px-Monteverde_bosque.jpg", page:"https://commons.wikimedia.org/wiki/File:Monteverde_bosque.jpg", alt:"Monteverde cloud forest"},
     dine:[
-      {n:"Restaurante El Sapo at Senda Monteverde", d:"The most praised celiac option in town. Many gluten-free dishes.", t:"Celiac friendly"},
-      {n:"Tree House Restaurant", d:"Built around a giant ficus in Santa Elena. Gluten-free dishes marked.", t:"GF marked"},
-      {n:"Travesía Restaurant", d:"Listed with gluten-free options. Ask about the fryer.", t:"GF options"}
+      {n:"Restaurante El Sapo, Senda Monteverde", d:"The most praised celiac option in town.", t:"Celiac friendly"},
+      {n:"Tree House Restaurant", d:"Built around a giant ficus. Gluten-free dishes marked.", t:"GF marked"},
+      {n:"Travesía Restaurant", d:"Gluten-free options listed. Ask about the fryer.", t:"GF options"}
     ],
     todo:[
-      {n:"Monteverde Cloud Forest Reserve", d:"Enter at 7 AM with a guide for the best chance at a quetzal.", lat:10.3017, lng:-84.7953, i:"🌲"},
+      {n:"Monteverde Cloud Forest Reserve", d:"7 AM with a guide for the best chance at a quetzal.", lat:10.3017, lng:-84.7953, i:"🌲"},
       {n:"Curi-Cancha Reserve", d:"Smaller, quieter, superb birding.", lat:10.3052, lng:-84.8044, i:"🐦"},
-      {n:"Night walk", d:"Sloths, tarantulas, glass frogs. Any 5:45 PM tour."},
-      {n:"Selvatura or Sky Adventures", d:"Hanging bridges, or ziplines above the canopy.", lat:10.3343, lng:-84.8040, i:"🌉"},
-      {n:"El Trapiche farm tour", d:"Family farm: coffee, sugar cane and cacao.", lat:10.3220, lng:-84.8270, i:"🐄"},
+      {n:"Selvatura Park", d:"Hanging bridges and ziplines.", lat:10.3343, lng:-84.8040, i:"🌉"},
+      {n:"El Trapiche Tour", d:"Family farm: coffee, sugar cane, cacao.", lat:10.3220, lng:-84.8270, i:"🐄"},
       {n:"Café Caburé", d:"Handmade chocolate truffles.", lat:10.3060, lng:-84.8170, i:"🍫"},
-      {n:"Monteverde Cheese Factory", d:"Founded by the Quaker settlers. Ice cream stop.", lat:10.3040, lng:-84.8100, i:"🧀"},
-      {n:"100% Aventura", d:"The long 'Superman' zipline, if you want the thrill."}
+      {n:"Monteverde Cheese Factory", d:"Founded by Quaker settlers. Ice cream.", lat:10.3040, lng:-84.8100, i:"🧀"},
+      {n:"Night walk", d:"Sloths, tarantulas, glass frogs. 5:45 PM tours."},
+      {n:"100% Aventura", d:"The long 'Superman' zipline."}
     ]
   },
   {
     id:4, rn:"IV", area:"Manuel Antonio", short:"Manuel Antonio", c:"#2d4fa0",
     name:"Jungle Room, breakfast and park tour", checkIn:"2026-11-12", checkOut:"2026-11-14", inTime:"2 PM", outTime:"11 AM",
-    host:"(add name)", address:"Calle Cerros, Manuel Antonio, Quepos",
+    host:"(to add)", address:"Calle Cerros, Manuel Antonio, Quepos",
     nav:"Manuel Antonio, Quepos, Costa Rica", lat:9.4010, lng:-84.1550, airbnb:"",
-    note:"Homemade Costa Rican breakfast and a guided park tour are included. Park entry tickets are not: buy them for Fri Nov 13.",
-    flag:"Area matched from the listing title. Confirm the exact spot in the Airbnb app.",
+    note:"Breakfast and a guided park tour are included. Park entry tickets are not.",
+    flag:"Area matched from the listing title, so distances are approximate. The Airbnb app has the exact pin.",
+    hospital:"Hospital Max Terán Valls, Quepos",
     photo:{src:"https://upload.wikimedia.org/wikipedia/commons/6/69/Manuel_antonio_06_april_2005.jpeg", page:"https://commons.wikimedia.org/wiki/File:Manuel_antonio_06_april_2005.jpeg", alt:"Manuel Antonio beach"},
     dine:[
       {n:"Namaste Indian Restaurant Manuel Antonio", d:"Reviewers single out how many dishes are gluten free.", t:"Many GF dishes"},
-      {n:"Karola's", d:"A diner with a gluten allergy said they go above and beyond.", t:"Celiac aware"},
-      {n:"Arenas del Mar", d:"Resort restaurant with a gluten-free menu and an ocean view.", t:"GF menu"},
+      {n:"Karola's", d:"Described as going above and beyond for gluten allergies.", t:"Celiac aware"},
+      {n:"Arenas del Mar", d:"Resort restaurant with a gluten-free menu and ocean view.", t:"GF menu"},
       {n:"Manuel Antonio Falafel Bar", d:"Casual lunch, gluten-free accommodating.", t:"GF options"}
     ],
     todo:[
-      {n:"Manuel Antonio National Park", d:"Our guided tour is included. Closed Tuesdays. Sloths, monkeys, white-sand coves.", lat:9.3870, lng:-84.1430, i:"🦥"},
-      {n:"Playa Espadilla", d:"Public beach outside the park. Sunset chairs.", lat:9.3920, lng:-84.1470, i:"🏖️"},
-      {n:"Sunset catamaran", d:"Dolphins, snorkeling and a sunset sail from Quepos."},
-      {n:"El Avión", d:"Drinks inside a 1950s cargo plane at sunset.", lat:9.4000, lng:-84.1560, i:"✈️"},
-      {n:"Villa Vanilla spice farm", d:"Vanilla, cinnamon and cacao tasting, 25 min inland.", lat:9.4560, lng:-84.0900, i:"🌿"},
-      {n:"Isla Damas mangroves", d:"Kayak or boat through the mangroves; monkeys and crocodiles."},
-      {n:"Surf lesson", d:"Gentle beginner waves on Playa Espadilla."}
+      {n:"Manuel Antonio National Park", d:"Guided tour included. Closed Tuesdays.", lat:9.3870, lng:-84.1430, i:"🦥"},
+      {n:"Playa Espadilla", d:"Public beach outside the park.", lat:9.3920, lng:-84.1470, i:"🏖️"},
+      {n:"El Avión", d:"Drinks in a 1950s cargo plane at sunset.", lat:9.4000, lng:-84.1560, i:"✈️"},
+      {n:"Villa Vanilla", d:"Vanilla, cinnamon and cacao farm, 25 min inland.", lat:9.4560, lng:-84.0900, i:"🌿"},
+      {n:"Marina Pez Vela", d:"Waterfront restaurants and sunset walk.", lat:9.4220, lng:-84.1665, i:"⛵"},
+      {n:"Sunset catamaran", d:"Dolphins and snorkeling from Quepos."},
+      {n:"Isla Damas mangroves", d:"Kayak or boat; monkeys and crocodiles."}
     ]
   },
   {
@@ -478,56 +442,114 @@ const STAYS = [
     name:"New Studio near the Airport Hub", checkIn:"2026-11-14", checkOut:"2026-11-15", inTime:"3 PM", outTime:"11 AM",
     host:"Miguel", address:"Calle Cariari, Apartment 808, San Pablo, Heredia",
     nav:"San Pablo, Heredia, Costa Rica", lat:9.9960, lng:-84.0950, airbnb:"",
-    note:"Last night. Repack, refuel the rental, buy coffee to bring home.",
+    note:"Last night. About 25 to 40 minutes to the airport.",
+    hospital:"Hospital San Vicente de Paúl, Heredia",
     photo:{src:"https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/IglesiaLaInmaculadaHeredia.JPG/960px-IglesiaLaInmaculadaHeredia.JPG", page:"https://commons.wikimedia.org/wiki/File:IglesiaLaInmaculadaHeredia.JPG", alt:"Church of the Immaculate Conception, Heredia"},
     dine:[
-      {n:"Pollo FAS Gluten Free", d:"100% dedicated gluten-free kitchen in Santa Bárbara de Heredia, 15 min.", t:"Dedicated GF"},
-      {n:"Ruta 3 Heredia", d:"Gluten-free menu listed in Heredia.", t:"GF menu"},
-      {n:"Baru, Paseo Belén", d:"Gluten-free sandwiches, burgers and cakes.", t:"GF options"}
+      {n:"Pollo FAS Gluten Free", d:"100% dedicated gluten-free kitchen, Santa Bárbara de Heredia.", t:"Dedicated GF"},
+      {n:"Ruta 3 Heredia", d:"Gluten-free menu listed.", t:"GF menu"},
+      {n:"Baru Paseo Belén", d:"Gluten-free sandwiches, burgers and cakes.", t:"GF options"}
     ],
     todo:[
-      {n:"Café Britt Coffee Tour", d:"Theatrical coffee tour in Barva, 15 min.", lat:10.0235, lng:-84.1095, i:"☕"},
+      {n:"Café Britt Coffee Tour", d:"Coffee tour in Barva, 15 min.", lat:10.0235, lng:-84.1095, i:"☕"},
       {n:"Toucan Rescue Ranch", d:"Sloths and toucans in rehab. Book ahead.", lat:10.0390, lng:-84.0610, i:"🦜"},
-      {n:"Supermarket coffee run", d:"Café 1820, Britt, Doka for gifts at half the airport price."},
-      {n:"Heredia's Fortín and park", d:"Colonial tower and church, a short evening walk."}
+      {n:"Fortín de Heredia", d:"Colonial tower and central park."},
+      {n:"Supermarket coffee run", d:"Café 1820, Britt, Doka: half the airport price."}
     ]
   }
 ];
 
 const ROUTE = [
-  {i:"✈️", n:"SJO Juan Santamaría Airport", d:"Arrive Wed Nov 4. Fly home Sun Nov 15.", lat:9.9939, lng:-84.2088},
-  {i:"⛪", n:"Grecia's red metal church", d:"Stop on the drive north, Thu Nov 5.", lat:10.0730, lng:-84.3123},
-  {i:"🛞", n:"Sarchí", d:"Painted oxcarts. A twenty minute stop.", lat:10.0897, lng:-84.3478},
+  {i:"✈️", n:"SJO Juan Santamaría Airport", d:"Arrival Wed Nov 4. Departure Sun Nov 15.", lat:9.9939, lng:-84.2088},
+  {i:"⛪", n:"Grecia church", d:"Stop on the drive north, Nov 5.", lat:10.0730, lng:-84.3123},
+  {i:"🛞", n:"Sarchí", d:"Painted oxcarts.", lat:10.0897, lng:-84.3478},
   {i:"🌿", n:"Zarcero topiary park", d:"Hedge sculptures and a pink church.", lat:10.1858, lng:-84.3911},
-  {i:"🥐", n:"Tom's Pan, Nuevo Arenal", d:"German bakery on the lake road, Mon Nov 9.", lat:10.5340, lng:-84.8900},
-  {i:"🐊", n:"Tárcoles crocodile bridge", d:"Giant crocodiles below, Thu Nov 12.", lat:9.7895, lng:-84.6086}
+  {i:"🥐", n:"Tom's Pan, Nuevo Arenal", d:"Bakery on the lake road, Nov 9.", lat:10.5340, lng:-84.8900},
+  {i:"🐊", n:"Tárcoles crocodile bridge", d:"Crocodiles below the bridge, Nov 12.", lat:9.7895, lng:-84.6086}
 ];
-
-const DRIVES = {
-  2:"Alajuela to Arenal · about 2.5 to 3 h via Grecia, Sarchí, Zarcero",
-  3:"Arenal to Monteverde · about 3.5 to 4 h around Lake Arenal",
-  4:"Monteverde to Manuel Antonio · about 3.5 to 4 h down Route 606 and the coast",
-  5:"Manuel Antonio to Heredia · about 3 h via Route 27"
-};
+const DRIVES = {2:"Alajuela to Arenal · about 2.5 to 3 h", 3:"Arenal to Monteverde · about 3.5 to 4 h", 4:"Monteverde to Manuel Antonio · about 3.5 to 4 h", 5:"Manuel Antonio to Heredia · about 3 h"};
 
 const DAYS = [
-  {date:"2026-11-04", stay:1, title:"Land, settle in", items:["Rental car and SIM at SJO","Check in from 3 PM with Carol","Groceries and colones for the week; easy dinner"]},
-  {date:"2026-11-05", stay:2, title:"North to Arenal", items:["Checkout 11 AM (Doka coffee tour first, if up early)","Grecia church, Sarchí oxcarts, Zarcero topiaries","Check in from 3 PM with German; sunset from the lookout"]},
-  {date:"2026-11-06", stay:2, title:"Volcano day", items:["La Fortuna Waterfall at 7 AM","Arenal National Park lava trails","Evening hot springs"]},
-  {date:"2026-11-07", stay:2, title:"Canopy and chocolate", items:["Místico hanging bridges in the morning","Chocolate tour or North Fields farm","Dinner at Don Rufino"]},
-  {date:"2026-11-08", stay:2, title:"Open day", items:["Río Celeste day trip, rafting, or a slow rain day","Fill the gas tank tonight"]},
-  {date:"2026-11-09", stay:3, title:"Lake road to Monteverde", items:["Checkout 11 AM; drive around Lake Arenal","Pastries at Tom's Pan","Check in from 3 PM with Harry; night walk at 5:45"]},
-  {date:"2026-11-10", stay:3, title:"Cloud forest", items:["Monteverde Reserve or Curi-Cancha at 7 AM with a guide","Café Caburé chocolate; cheese factory ice cream","Dinner at El Sapo"]},
-  {date:"2026-11-11", stay:3, title:"Canopy and farm", items:["Selvatura or Sky Adventures","El Trapiche farm tour","Pack the layers away"]},
+  {date:"2026-11-04", stay:1, title:"Arrival", items:["Rental car and SIM at SJO","Check in from 3 PM","Groceries and colones for the week"]},
+  {date:"2026-11-05", stay:2, title:"North to Arenal", items:["Checkout 11 AM; optional Doka coffee tour first","Grecia, Sarchí, Zarcero on the way","Check in from 3 PM"]},
+  {date:"2026-11-06", stay:2, title:"Volcano day", items:["La Fortuna Waterfall at 7 AM","Arenal National Park trails","Hot springs in the evening"]},
+  {date:"2026-11-07", stay:2, title:"Canopy and chocolate", items:["Místico hanging bridges","Chocolate tour or North Fields farm"]},
+  {date:"2026-11-08", stay:2, title:"Open day", items:["Río Celeste, rafting, or a slow rain day","Fill the gas tank"]},
+  {date:"2026-11-09", stay:3, title:"Lake road to Monteverde", items:["Checkout 11 AM; drive around Lake Arenal","Tom's Pan bakery","Check in from 3 PM; night walk at 5:45"]},
+  {date:"2026-11-10", stay:3, title:"Cloud forest", items:["Reserve or Curi-Cancha at 7 AM with a guide","Café Caburé; cheese factory"]},
+  {date:"2026-11-11", stay:3, title:"Canopy and farm", items:["Selvatura or Sky Adventures","El Trapiche farm tour"]},
   {date:"2026-11-12", stay:4, title:"Down to the Pacific", items:["Checkout 11 AM","Tárcoles crocodile bridge","Check in from 2 PM; sunset at El Avión"]},
-  {date:"2026-11-13", stay:4, title:"Manuel Antonio park", items:["Breakfast, then the included park tour (bring SINAC tickets)","Beach inside the park","Sunset catamaran or Villa Vanilla"]},
-  {date:"2026-11-14", stay:5, title:"Back toward the airport", items:["Checkout 11 AM; about 3 h drive","Check in from 3 PM with Miguel","Coffee run, refuel, repack"]},
-  {date:"2026-11-15", stay:5, title:"Fly home", items:["Checkout by 11 AM, earlier for the flight","Return the car; allow time for the shuttle"]}
+  {date:"2026-11-13", stay:4, title:"Manuel Antonio park", items:["Breakfast, then the included park tour (SINAC tickets needed)","Beach inside the park"]},
+  {date:"2026-11-14", stay:5, title:"Toward the airport", items:["Checkout 11 AM; about 3 h drive","Check in from 3 PM","Refuel and repack"]},
+  {date:"2026-11-15", stay:5, title:"Departure", items:["Checkout by 11 AM, earlier for the flight","Return the rental car"]}
 ];
 
-const ESSENTIALS = [["⛽","Gas","gas station"],["🛒","Groceries","supermarket"],["🏪","Corner store","convenience store"],["☕","Coffee","coffee shop"],["🍫","Chocolate","chocolate shop"],["🐄","Farms","farm tour"],["💊","Pharmacy","farmacia"],["🏧","ATM","cajero ATM"]];
+const CATS = [
+  {k:"gas", l:"⛽ Gas", n:["fuel"], g:"gas station"},
+  {k:"groc", l:"🛒 Groceries", n:["supermarket"], g:"supermarket"},
+  {k:"store", l:"🏪 Corner store", n:["convenience store"], g:"convenience store"},
+  {k:"coffee", l:"☕ Coffee", n:["cafe"], g:"coffee shop"},
+  {k:"food", l:"🍽️ Restaurants", n:["restaurant"], g:"restaurant"},
+  {k:"pharm", l:"💊 Pharmacy", n:["pharmacy"], g:"farmacia"},
+  {k:"atm", l:"🏧 ATM", n:["atm", "bank"], g:"ATM"},
+  {k:"hosp", l:"🏥 Clinic", n:["hospital", "clinic"], g:"hospital"}
+];
 
-const CLIMATE = {1:"About 79° by day, 63° at night, afternoon showers.",2:"About 81° and 68°, humid; rain any time of day.",3:"About 68° and 59°, misty and windy. The cold stop.",4:"About 86° and 73°, hot with afternoon storms.",5:"About 77° and 61°, mild."};
+const CLIMATE = {1:"About 79° by day, 63° at night, afternoon showers.",2:"About 81° and 68°, humid, rain any time.",3:"About 68° and 59°, misty and windy.",4:"About 86° and 73°, afternoon storms.",5:"About 77° and 61°, mild."};
+
+/* ================================================================
+   INFO SHEETS (header buttons)
+   ================================================================ */
+const SHEETS = {
+  safety:{title:"Safety", sub:"what matters on this route", html:() => `
+    <h3>Emergencies</h3>
+    <ul><li><b>911</b> for police, ambulance and fire.</li><li>The US rates Costa Rica <b>Level 2, exercise increased caution</b>, mostly for petty theft. Latest at <a href="https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/CostaRica.html" target="_blank" rel="noopener">travel.state.gov</a>.</li></ul>
+    <h3>Nearest hospital or clinic</h3>
+    <ul>${STAYS.map(s => `<li><b>${s.rn}. ${esc(s.short)}:</b> <a href="https://www.google.com/maps/search/${encodeURIComponent(s.hospital + ", Costa Rica")}" target="_blank" rel="noopener">${esc(s.hospital)} ↗</a></li>`).join("")}</ul>
+    <h3>Theft</h3>
+    <ul><li>Nothing left in the car, ever, including the trunk at trailheads and beaches.</li><li>If a "helpful stranger" points out a flat tire near the airport, drive on to a gas station before stopping.</li><li>Keep passports in the stay's safe; carry a copy with the entry stamp.</li></ul>
+    <h3>Roads</h3>
+    <ul><li>Sunset is about 5:15 PM. Plan every drive to arrive before dark.</li><li>Narrow roads, potholes, one-lane bridges (<i>Ceda el paso</i> means yield).</li></ul>
+    <h3>Ocean and nature</h3>
+    <ul><li>Rip currents on Pacific beaches. Swim where others swim and near lifeguards.</li><li>Stay on trails; look before grabbing railings or branches (snakes).</li><li>Do not feed or touch wildlife. Monkeys in Manuel Antonio will open bags.</li><li>Use repellent: mosquitoes can carry dengue.</li></ul>`},
+  wifi:{title:"Wi-Fi", sub:"saved on this device only", html:() => `
+    <p class="muted" style="margin:0 0 6px">The host's Wi-Fi details are in the Airbnb app under the trip's house manual. Save them here; they stay on this device and are never published.</p>
+    ${STAYS.map(s => {
+      const w = wifiGet(s.id);
+      return `<div class="wifi"><h4>${s.rn}. ${esc(s.short)} · ${esc(s.name)}</h4>
+        <input data-wifi="${s.id}" data-f="net" placeholder="Network name" value="${esc(w.net || "")}">
+        <input data-wifi="${s.id}" data-f="pw" placeholder="Password" value="${esc(w.pw || "")}">
+        <div class="btns" style="margin-top:6px"><button class="btn soft" data-copywifi="${s.id}">Copy password</button></div></div>`;
+    }).join("")}
+    <h3>No signal?</h3>
+    <ul><li>Cafés and most restaurants have free Wi-Fi: ask for <i>"la clave del wifi"</i>.</li><li>An eSIM or local SIM (Kölbi has the best rural coverage; Claro and Liberty also work) avoids hunting for Wi-Fi.</li><li>Download offline Google Maps for Costa Rica before leaving the airport.</li><li>Hosts and tour companies use WhatsApp for everything.</li></ul>`},
+  food:{title:"Food", sub:"eating well, and eating gluten free", html:() => `
+    <h3>Eating gluten free</h3>
+    <ul><li>Naturally safe staples: corn tortillas, rice and beans, gallo pinto, grilled fish, plantains, fresh fruit.</li><li>Ask about sauces (soy sauce, Salsa Lizano), breading, and shared fryers every time.</li><li>Restaurant picks in each stop come from celiac review sites (Atly, Find Me Gluten Free). They are leads, not guarantees.</li></ul>
+    <div class="btns" style="margin:10px 0"><button class="btn solid" data-save="gf">Save the Spanish gluten-free card</button></div>
+    <h3>What to order</h3>
+    <ul><li><b>Casado:</b> the set lunch. Rice, beans, salad, plantain and a protein.</li><li><b>Gallo pinto:</b> rice and beans, the breakfast staple.</li><li><b>Ceviche:</b> fresh fish cured in lime, best on the coast.</li><li><b>Olla de carne:</b> beef and vegetable soup.</li><li><b>Sodas</b> are small local diners: the best value and often the best food.</li></ul>
+    <h3>Water and hygiene</h3>
+    <ul><li>Tap water is generally safe in all five areas. Ask the host if unsure.</li></ul>
+    <h3>Useful phrases</h3>
+    <table class="phr">
+      <tr><td>Sin gluten, por favor</td><td>Gluten free, please</td></tr>
+      <tr><td>¿Tiene trigo o harina?</td><td>Does it have wheat or flour?</td></tr>
+      <tr><td>La cuenta, por favor</td><td>The check, please</td></tr>
+      <tr><td>Un café, por favor</td><td>A coffee, please</td></tr>
+    </table>`},
+  rules:{title:"Travel rules", sub:"entry, driving, parks", html:() => `
+    <h3>Entry and exit</h3>
+    <ul><li>US citizens do not need a visa for a short trip. The passport must be valid for the whole stay.</li><li>Immigration can ask for proof of the return flight.</li><li>Carry the passport or a copy of the photo page and entry stamp at all times. Police can ask for it.</li><li>The departure tax is normally included in the airline ticket.</li></ul>
+    <h3>Driving</h3>
+    <ul><li>A valid US license works for tourists. Carry it with the passport (or copy with entry stamp).</li><li>Seatbelts are mandatory; no phone in hand while driving.</li><li>The alcohol limit is very low. Don't drink and drive.</li><li>Basic liability insurance is mandatory with every rental.</li><li>Central San José has weekday plate restrictions; this route mostly avoids it.</li></ul>
+    <h3>Parks and beaches</h3>
+    <ul><li>National park tickets are sold online through <a href="https://serviciosenlinea.sinac.go.cr/" target="_blank" rel="noopener">SINAC</a>. Manuel Antonio sells out and is closed Tuesdays.</li><li>Manuel Antonio restricts what food can be brought in. Check the rules on the ticket.</li><li>All beaches are public by law.</li><li>Drones need permits in national parks.</li><li>Taking shells, coral, plants or animals is illegal.</li></ul>
+    <h3>Everyday</h3>
+    <ul><li>Smoking is banned in restaurants, bars and public places.</li><li>Plugs are the same as the US (110V).</li><li>Time zone: Central time, no daylight saving.</li></ul>`},
+  money:{title:"Money", sub:"colones, dollars, tipping", html:() => `
+    <ul><li>Currency is the colón (₡). Roughly ₡500 to the dollar; check the rate before the trip.</li><li>US dollars are accepted at most tourist businesses; change comes back in colones.</li><li>Cards work almost everywhere. Carry colones for sodas, fruit stands, parking attendants and tolls.</li><li>Use bank ATMs (<i>cajero</i>) in daylight, inside a bank or supermarket.</li><li>Restaurant bills include a 10% service charge and 13% tax. Extra tip only for great service.</li><li>Guides: about $10 to $20 per person for a half day.</li><li>Gas stations are full service: <i>"lleno con regular, por favor."</i> No tip expected.</li></ul>`}
+};
 
 /* ================================================================ */
 const TZ = "America/Costa_Rica";
@@ -538,287 +560,368 @@ const fmt = (s, o) => D(s).toLocaleDateString("en-US", Object.assign({timeZone:"
 const short = s => fmt(s, {weekday:"short", month:"short", day:"numeric"});
 const md = s => fmt(s, {month:"short", day:"numeric"});
 const nights = s => Math.round((D(s.checkOut) - D(s.checkIn)) / 864e5);
-const todayCR = () => new Date().toLocaleDateString("en-CA", {timeZone:TZ});
-const gsearch = (q, lat, lng) => `https://www.google.com/maps/search/${encodeURIComponent(q)}/@${lat},${lng},14z`;
+const today = new Date().toLocaleDateString("en-CA", {timeZone:TZ});
 const gplace = (n, s) => `https://www.google.com/maps/search/${encodeURIComponent(n + ", " + s.short + ", Costa Rica")}`;
 const gdir = q => `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(q)}`;
+const gdirFrom = (s, lat, lng, mode) => `https://www.google.com/maps/dir/?api=1&origin=${s.lat},${s.lng}&destination=${lat},${lng}&travelmode=${mode}`;
 const waze = q => `https://waze.com/ul?q=${encodeURIComponent(q)}&navigate=yes`;
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const store = {
   get(k){ try { return localStorage.getItem(k) || ""; } catch(e){ return ""; } },
   set(k,v){ try { localStorage.setItem(k,v); } catch(e){} }
 };
-const today = todayCR();
+const wifiGet = id => { try { return JSON.parse(store.get("cr-wifi-" + id) || "{}"); } catch(e){ return {}; } };
+const km = (a, b) => { const R = 6371, r = x => x * Math.PI / 180, dLa = r(b.lat - a.lat), dLo = r(b.lng - a.lng);
+  const h = Math.sin(dLa/2)**2 + Math.cos(r(a.lat)) * Math.cos(r(b.lat)) * Math.sin(dLo/2)**2; return 2 * R * Math.asin(Math.sqrt(h)); };
+const fmtKm = k => k < 1 ? Math.round(k * 1000) + " m" : (k < 10 ? k.toFixed(1) : Math.round(k)) + " km";
+const fmtMi = k => (k * 0.621).toFixed(k < 16 ? 1 : 0) + " mi";
+const fmtDur = s => { const m = Math.round(s / 60); return m < 60 ? m + " min" : Math.floor(m / 60) + " h " + (m % 60) + " min"; };
 const currentStay = () => STAYS.find(s => today >= s.checkIn && today < s.checkOut) || (today === "2026-11-15" ? STAYS[4] : null);
+
+/* countdown in header */
+(function(){
+  const d = Math.round((D("2026-11-04") - D(today)) / 864e5), s = currentStay();
+  $("#count").textContent = d > 0 ? `${d} ${d === 1 ? "day" : "days"} to go` : s ? `Today: ${s.short}` : "Pura vida";
+})();
 
 /* ===== view + device ===== */
 const params = new URLSearchParams(location.search);
-let state = {
-  view: params.get("view") || store.get("cr-view"),
-  device: params.get("device") || store.get("cr-device")
-};
+let state = {view: params.get("view") || store.get("cr-view"), device: params.get("device") || store.get("cr-device")};
 const guessDevice = () => (matchMedia("(pointer:coarse)").matches || innerWidth < 760) ? "phone" : "desktop";
 
 function applyView(){
   document.body.classList.toggle("d-phone", state.device === "phone");
-  document.body.classList.toggle("d-desktop", state.device !== "phone");
   $("#devBtn").textContent = state.device === "phone" ? "Phone" : "Desktop";
   $$("#viewToggle button").forEach(b => b.setAttribute("aria-pressed", b.dataset.val === state.view));
   const dash = state.view === "dashboard";
   $("#simple").classList.toggle("hidden", dash);
   $("#dash").classList.toggle("hidden", !dash);
-  if (dash){ $("#dashMapSlot").appendChild($("#map")); closeOverlay(true); }
-  else { $("#overlaySlot").appendChild($("#map")); }
+  if (dash){ $("#dashMapSlot").appendChild($("#map")); closeOverlay(); }
+  else $("#overlaySlot").appendChild($("#map"));
   map.scrollWheelZoom[state.device === "desktop" && dash ? "enable" : "disable"]();
-  setTimeout(() => { map.invalidateSize(); if (dash) map.fitBounds(wholeTrip()); }, 60);
+  setTimeout(() => { map.invalidateSize(); if (dash) goStop(activeStop, false, false); }, 80);
   store.set("cr-view", state.view); store.set("cr-device", state.device);
+  document.documentElement.style.setProperty("--hdr", $("header.top").offsetHeight + "px");
 }
-
 function showGate(){
   const g = $("#gate"); g.classList.remove("hidden");
-  const pre = {device: state.device || guessDevice(), view: state.view || "simple"};
+  const pre = {device: state.device || guessDevice(), view: state.view || "dashboard"};
   $$("#gate .seg").forEach(seg => seg.querySelectorAll(".opt").forEach(o => o.setAttribute("aria-pressed", o.dataset.val === pre[seg.dataset.group])));
-  g.onclick = e => {
-    const o = e.target.closest(".opt");
-    if (o){ o.parentElement.querySelectorAll(".opt").forEach(x => x.setAttribute("aria-pressed", x === o)); pre[o.parentElement.dataset.group] = o.dataset.val; }
-  };
-  $("#enter").onclick = () => { state = pre; g.classList.add("hidden"); applyView(); scrollTo(0,0); };
+  g.onclick = e => { const o = e.target.closest(".opt"); if (o){ o.parentElement.querySelectorAll(".opt").forEach(x => x.setAttribute("aria-pressed", x === o)); pre[o.parentElement.dataset.group] = o.dataset.val; } };
+  $("#enter").onclick = () => { state = pre; g.classList.add("hidden"); applyView(); scrollTo(0, 0); };
 }
-
-$("#viewToggle").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; state.view = b.dataset.val; applyView(); scrollTo(0,0); });
+$("#viewToggle").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; state.view = b.dataset.val; applyView(); scrollTo(0, 0); });
 $("#devBtn").addEventListener("click", showGate);
 
 /* ===== map ===== */
-const map = L.map("map", {scrollWheelZoom:false, zoomSnap:0.5, zoomControl:false}).setView([10.0,-84.45], 8);
+const map = L.map("map", {scrollWheelZoom:false, zoomSnap:0.5, zoomControl:false}).setView([10.0, -84.45], 8);
 L.control.zoom({position:"bottomright"}).addTo(map);
 const topo = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}", {maxZoom:19, attribution:"Tiles &copy; Esri"}).addTo(map);
 const streets = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {maxZoom:19, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'});
 const sat = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {maxZoom:19, attribution:"Imagery &copy; Esri"});
 L.control.layers({"Terrain":topo, "Streets":streets, "Satellite":sat}, null, {position:"topright"}).addTo(map);
 
-const stayMarkers = {};
 const routePts = [[9.9939,-84.2088], ...STAYS.map(s => [s.lat, s.lng]), [9.9939,-84.2088]];
 const wholeTrip = () => L.latLngBounds(routePts).pad(0.1);
-L.polyline(routePts, {color:"#151a17", weight:2.5, opacity:.6, dashArray:"2 8", lineCap:"round"}).addTo(map);
-
+L.polyline(routePts, {color:"#151a17", weight:2.5, opacity:.5, dashArray:"2 8", lineCap:"round"}).addTo(map);
+const stayMarkers = {};
 STAYS.forEach(s => {
-  if (s.approx) L.circle([s.lat, s.lng], {radius:9000, color:s.c, weight:1.5, fillOpacity:.07, dashArray:"4 6"}).addTo(map);
+  if (s.approx) L.circle([s.lat, s.lng], {radius:9000, color:s.c, weight:1.5, fillOpacity:.06, dashArray:"4 6"}).addTo(map);
   stayMarkers[s.id] = L.marker([s.lat, s.lng], {zIndexOffset:1000, icon:L.divIcon({className:"", html:`<div class="spin"><div class="arch" style="background:${s.c}">${s.rn}</div></div>`, iconSize:[38,48], iconAnchor:[19,46], popupAnchor:[0,-42]})})
-    .addTo(map).bindPopup(`<b class="t">${s.rn}. ${esc(s.area)}</b>${esc(s.name)}<br>${short(s.checkIn)} to ${short(s.checkOut)}<br>Host ${esc(s.host)} · in ${s.inTime}, out ${s.outTime}<br><a href="${gdir(s.nav)}" target="_blank" rel="noopener">Directions ↗</a>`);
+    .addTo(map).bindPopup(`<b class="t">${s.rn}. ${esc(s.area)}</b>${esc(s.name)}<br>${short(s.checkIn)} to ${short(s.checkOut)}<br><a href="${gdir(s.nav)}" target="_blank" rel="noopener">Directions ↗</a>`);
+  stayMarkers[s.id].on("click", () => { if (activeStop !== s.id) setStop(s.id, false); });
   s.todo.filter(p => p.lat).forEach(p => {
-    L.marker([p.lat, p.lng], {icon:L.divIcon({className:"", html:`<div class="dot" style="--c:${s.c}">${p.i}</div>`, iconSize:[24,24], iconAnchor:[12,12], popupAnchor:[0,-10]})})
-      .addTo(map).bindPopup(`<b class="t">${esc(p.n)}</b>${esc(p.d)}<br><a href="${gplace(p.n, s)}" target="_blank" rel="noopener">Open in Google Maps ↗</a>`);
+    L.marker([p.lat, p.lng], {icon:L.divIcon({className:"", html:`<div class="dot" style="--c:${s.c}">${p.i}</div>`, iconSize:[24,24], iconAnchor:[12,12]})})
+      .addTo(map).on("click", ev => { L.DomEvent.stopPropagation(ev); measure({lat:p.lat, lng:p.lng, name:p.n}); });
   });
 });
 ROUTE.forEach(p => L.marker([p.lat, p.lng], {icon:L.divIcon({className:"", html:`<div class="dot" style="--c:#151a17">${p.i}</div>`, iconSize:[24,24], iconAnchor:[12,12]})})
-  .addTo(map).bindPopup(`<b class="t">${esc(p.n)}</b>${esc(p.d)}<br><a href="https://www.google.com/maps/search/${encodeURIComponent(p.n + ", Costa Rica")}" target="_blank" rel="noopener">Open in Google Maps ↗</a>`));
-map.fitBounds(wholeTrip());
+  .addTo(map).bindPopup(`<b class="t">${esc(p.n)}</b>${esc(p.d)}`));
 
-function goStop(id){
-  if (!id){ map.flyToBounds(wholeTrip(), {duration:.8}); map.closePopup(); return; }
+const mapReady = () => map.getSize().x > 60 && map.getSize().y > 60;
+if (window.ResizeObserver) new ResizeObserver(() => {
+  map.invalidateSize();
+  if (mapReady() && map.getZoom() < 6) goStop(activeStop, false, false);
+}).observe($("#map"));
+const hitLayer = L.layerGroup().addTo(map);
+const routeLayer = L.layerGroup().addTo(map);
+let destMarker = null;
+map.on("click", e => measure({lat:e.latlng.lat, lng:e.latlng.lng, name:"Dropped pin"}));
+
+/* ===== stops ===== */
+let activeStop = (currentStay() || STAYS[0]).id;
+const stay = () => STAYS.find(s => s.id === activeStop);
+function goStop(id, popup = true, animate = true){
   const s = STAYS.find(x => x.id === id);
-  map.flyTo([s.lat, s.lng], s.approx ? 11 : 12.5, {duration:.8});
-  setTimeout(() => stayMarkers[id].openPopup(), 850);
+  if (!mapReady()) return;
+  if (animate) map.flyTo([s.lat, s.lng], s.approx ? 11.5 : 13, {duration:.7});
+  else map.setView([s.lat, s.lng], s.approx ? 11.5 : 13);
+  if (popup) setTimeout(() => stayMarkers[id].openPopup(), 750);
 }
-
-/* stop selector chips (dashboard + overlay) */
-const stopChips = () => `<button class="stop" data-stop="0" aria-pressed="true">All</button>` +
-  STAYS.map(s => `<button class="stop" data-stop="${s.id}" style="--accent:${s.c}"><i>${s.rn}</i>${esc(s.short)}</button>`).join("");
-let activeStop = 0;
 function setStop(id, fly = true){
   activeStop = id;
   $$(".stop").forEach(b => b.setAttribute("aria-pressed", +b.dataset.stop === id));
+  clearTool();
+  renderSide();
   if (fly) goStop(id);
-  renderPane();
 }
+const stopChips = () => STAYS.map(s => `<button class="stop" data-stop="${s.id}" style="--accent:${s.c}"><i>${s.rn}</i>${esc(s.short)}</button>`).join("");
 ["#dashStops", "#overlayStops"].forEach(sel => {
   $(sel).innerHTML = stopChips();
   $(sel).addEventListener("click", e => { const b = e.target.closest(".stop"); if (b) setStop(+b.dataset.stop); });
 });
+const allBtn = L.control({position:"topleft"});
+allBtn.onAdd = () => { const b = L.DomUtil.create("button", "btn soft"); b.textContent = "Whole trip"; b.style.margin = "10px"; L.DomEvent.on(b, "click", ev => { L.DomEvent.stop(ev); map.flyToBounds(wholeTrip(), {duration:.7}); }); return b; };
+allBtn.addTo(map);
 
-/* simple view map overlay */
-function openOverlay(id){
-  $("#mapOverlay").classList.remove("hidden");
-  document.body.style.overflow = "hidden";
-  setTimeout(() => { map.invalidateSize(); setStop(id || 0); }, 50);
+/* ===== measuring tool ===== */
+async function osrm(profile, a, b){
+  const base = profile === "foot" ? "https://routing.openstreetmap.de/routed-foot" : "https://routing.openstreetmap.de/routed-car";
+  const r = await fetch(`${base}/route/v1/driving/${a.lng},${a.lat};${b.lng},${b.lat}?overview=full&geometries=geojson`);
+  const j = await r.json();
+  if (!j.routes || !j.routes.length) throw new Error("no route");
+  return j.routes[0];
 }
-function closeOverlay(silent){
-  $("#mapOverlay").classList.add("hidden");
-  document.body.style.overflow = "";
+function clearTool(){
+  hitLayer.clearLayers(); routeLayer.clearLayers();
+  if (destMarker){ map.removeLayer(destMarker); destMarker = null; }
+  $("#results").innerHTML = ""; $("#routeCard").innerHTML = "";
+  $$(".cat").forEach(c => c.setAttribute("aria-pressed", "false"));
 }
-$("#closeMap").onclick = () => closeOverlay();
-document.addEventListener("click", e => { const b = e.target.closest("[data-openmap]"); if (b) openOverlay(+b.dataset.openmap); });
+async function measure(p){
+  const s = stay(), crow = km(s, p);
+  routeLayer.clearLayers();
+  if (destMarker) map.removeLayer(destMarker);
+  destMarker = L.marker([p.lat, p.lng], {icon:L.divIcon({className:"", html:'<div class="dest"></div>', iconSize:[22,22], iconAnchor:[11,11], popupAnchor:[0,-10]})}).addTo(map);
+  const links = `<a href="${gdirFrom(s, p.lat, p.lng, "walking")}" target="_blank" rel="noopener">Walk ↗</a> · <a href="${gdirFrom(s, p.lat, p.lng, "driving")}" target="_blank" rel="noopener">Drive ↗</a> · <a href="https://waze.com/ul?ll=${p.lat},${p.lng}&navigate=yes" target="_blank" rel="noopener">Waze ↗</a>`;
+  const card = (walk, drive) => `<div class="routecard"><span class="sc muted">From ${esc(s.name)}</span><h4>${esc(p.name)}</h4>
+    <div class="legs"><div class="leg walk"><span>🚶 Walk</span><b>${walk}</b></div><div class="leg drive"><span>🚗 Drive</span><b>${drive}</b></div></div>
+    ${s.approx ? `<div class="flag" style="margin:0 0 8px">Measured from the approximate pin.</div>` : ""}
+    <div style="font-size:15px">${links}</div></div>`;
+  $("#routeCard").innerHTML = card("…", "…");
+  destMarker.bindPopup(`<b class="t">${esc(p.name)}</b>Measuring from the stay…`).openPopup();
+  let walk = "too far", drive = "n/a", wTxt = "", dTxt = "";
+  try {
+    const d = await osrm("car", s, p);
+    drive = fmtDur(d.duration); dTxt = `${fmtDur(d.duration)} · ${fmtKm(d.distance / 1000)}`;
+    drive = `${fmtDur(d.duration)}<span style="display:block">${fmtKm(d.distance/1000)} · ${fmtMi(d.distance/1000)}</span>`;
+    L.geoJSON(d.geometry, {style:{color:"#2d4fa0", weight:5, opacity:.8}}).addTo(routeLayer);
+  } catch(e){ drive = "no route"; }
+  if (crow < 12){
+    try {
+      const w = await osrm("foot", s, p);
+      walk = `${fmtDur(w.duration)}<span style="display:block">${fmtKm(w.distance/1000)} · ${fmtMi(w.distance/1000)}</span>`;
+      wTxt = fmtDur(w.duration);
+      L.geoJSON(w.geometry, {style:{color:"#1d5e45", weight:4, opacity:.9, dashArray:"6 7"}}).addTo(routeLayer);
+    } catch(e){ walk = "no path"; }
+  }
+  $("#routeCard").innerHTML = card(walk, drive);
+  destMarker.setPopupContent(`<b class="t">${esc(p.name)}</b>🚶 ${wTxt || (crow < 12 ? "no path" : "too far to walk")}<br>🚗 ${dTxt || "no route"}<br>${links}`).openPopup();
+  const b = L.latLngBounds([[s.lat, s.lng], [p.lat, p.lng]]);
+  if (mapReady() && !map.getBounds().contains(b)) map.flyToBounds(b.pad(0.3), {duration:.6, maxZoom:15});
+  if (document.body.classList.contains("d-phone") && state.view === "dashboard") $("#routeCard").scrollIntoView({behavior:"smooth", block:"nearest"});
+}
+function showResults(list, label, gquery){
+  const s = stay();
+  hitLayer.clearLayers();
+  if (!list.length){
+    $("#results").innerHTML = `<div class="statusline">Nothing mapped nearby for ${esc(label)}. <a style="color:var(--lamp)" href="https://www.google.com/maps/search/${encodeURIComponent(gquery)}/@${s.lat},${s.lng},14z" target="_blank" rel="noopener">Search Google Maps ↗</a></div>`;
+    return;
+  }
+  list.forEach(p => { p.k = km(s, p); });
+  list.sort((a, b) => a.k - b.k);
+  const top = list.slice(0, 8);
+  top.forEach((p, i) => L.marker([p.lat, p.lng], {icon:L.divIcon({className:"", html:'<div class="hit"></div>', iconSize:[14,14], iconAnchor:[7,7]})})
+    .addTo(hitLayer).on("click", ev => { L.DomEvent.stopPropagation(ev); measure(p); }));
+  $("#results").innerHTML = top.map((p, i) => `<button class="res" data-i="${i}"><span>${esc(p.name)}</span><small>${fmtKm(p.k)} away</small></button>`).join("") +
+    `<div class="statusline">Straight-line distance. Tap one for walk and drive times. <a style="color:var(--lamp)" href="https://www.google.com/maps/search/${encodeURIComponent(gquery)}/@${s.lat},${s.lng},14z" target="_blank" rel="noopener">More on Google Maps ↗</a></div>`;
+  $("#results").onclick = e => { const b = e.target.closest(".res"); if (b) measure(top[+b.dataset.i]); };
+  if (mapReady()) map.flyToBounds(L.latLngBounds([[s.lat, s.lng], ...top.map(p => [p.lat, p.lng])]).pad(0.2), {duration:.6, maxZoom:15});
+}
+async function searchCat(c){
+  const s = stay();
+  $$(".cat").forEach(x => x.setAttribute("aria-pressed", x.dataset.k === c.k));
+  $("#routeCard").innerHTML = "";
+  $("#results").innerHTML = `<div class="statusline">Looking for ${esc(c.l)} near ${esc(s.short)}…</div>`;
+  const label = c.l.replace(/^\S+\s/, "");
+  let found = [];
+  for (const d of [0.05, 0.18]){
+    const vb = [s.lng - d, s.lat + d, s.lng + d, s.lat - d].join(",");
+    for (const term of c.n){
+      try {
+        const r = await fetch(`https://nominatim.openstreetmap.org/search?format=jsonv2&limit=25&countrycodes=cr&bounded=1&viewbox=${vb}&q=${encodeURIComponent(term)}`);
+        const j = await r.json();
+        j.forEach(x => { if (!found.some(f => f.id === x.place_id)) found.push({id:x.place_id, lat:+x.lat, lng:+x.lon, name:x.name || label}); });
+      } catch(e){}
+    }
+    if (found.length >= 3) break;
+  }
+  showResults(found, c.l, c.g);
+}
+async function searchText(text){
+  const s = stay();
+  $$(".cat").forEach(x => x.setAttribute("aria-pressed", "false"));
+  $("#routeCard").innerHTML = "";
+  $("#results").innerHTML = `<div class="statusline">Searching near ${esc(s.short)}…</div>`;
+  const vb = [s.lng - 0.35, s.lat + 0.35, s.lng + 0.35, s.lat - 0.35].join(",");
+  let list = [];
+  try {
+    const r = await fetch(`https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&countrycodes=cr&viewbox=${vb}&q=${encodeURIComponent(text)}`);
+    const j = await r.json();
+    list = j.map(x => ({lat:+x.lat, lng:+x.lon, name:x.name || x.display_name.split(",")[0]}));
+  } catch(e){}
+  showResults(list, `"${text}"`, text);
+}
+async function findAndMeasure(name){
+  const s = stay();
+  $("#results").innerHTML = `<div class="statusline">Finding ${esc(name)}…</div>`;
+  const vb = [s.lng - 0.35, s.lat + 0.35, s.lng + 0.35, s.lat - 0.35].join(",");
+  try {
+    const r = await fetch(`https://nominatim.openstreetmap.org/search?format=jsonv2&limit=5&countrycodes=cr&viewbox=${vb}&q=${encodeURIComponent(name)}`);
+    const j = await r.json();
+    if (j.length){
+      const best = j.map(x => ({lat:+x.lat, lng:+x.lon, name})).sort((a, b) => km(s, a) - km(s, b))[0];
+      if (km(s, best) < 60){ $("#results").innerHTML = ""; return measure(best); }
+    }
+  } catch(e){}
+  $("#results").innerHTML = `<div class="statusline">${esc(name)} isn't on the open map. <a style="color:var(--lamp)" href="https://www.google.com/maps/dir/?api=1&origin=${s.lat},${s.lng}&destination=${encodeURIComponent(name + ", " + s.short + ", Costa Rica")}" target="_blank" rel="noopener">Get times on Google Maps ↗</a></div>`;
+}
+$("#cats").innerHTML = CATS.map(c => `<button class="cat" data-k="${c.k}" aria-pressed="false">${c.l}</button>`).join("");
+$("#cats").addEventListener("click", e => { const b = e.target.closest(".cat"); if (b) searchCat(CATS.find(c => c.k === b.dataset.k)); });
+$("#searchForm").addEventListener("submit", e => { e.preventDefault(); const t = $("#q").value.trim(); if (t) searchText(t); });
 
-/* ===== SIMPLE: hero line, doors, chapters ===== */
-(function nowLine(){
-  const start = "2026-11-04", d = Math.round((D(start) - D(today)) / 864e5), s = currentStay();
-  $("#nowline").innerHTML = d > 0 ? `<span class="sc">${d} ${d === 1 ? "day" : "days"} to go</span> &nbsp;·&nbsp; we fly Wednesday, November 4`
-    : s ? `<span class="sc">Today</span> &nbsp;·&nbsp; ${esc(s.area)}, ${esc(s.name)}` : `<span class="sc">Pura vida</span> &nbsp;·&nbsp; home again`;
-})();
-
-$("#doors").innerHTML = STAYS.map(s => `<a class="door" href="#ch-${s.id}" style="--accent:${s.c}">
-  <div class="num" style="color:${s.c}">${s.rn}</div><h3>${esc(s.short)}</h3><small>${md(s.checkIn)} to ${md(s.checkOut)}</small><small>${nights(s)} night${nights(s) > 1 ? "s" : ""}</small></a>`).join("");
-
-$("#chapters").innerHTML = STAYS.map(s => {
-  const n = nights(s);
-  return `<section class="chapter" id="ch-${s.id}" style="--accent:${s.c}">
-    <div class="wrap"><div class="ch-grid">
-      <div class="ch-photo">
-        <div class="doorway"><img loading="lazy" src="${s.photo.src}" alt="${esc(s.photo.alt)}"></div>
-        <div class="credit">Photo: <a href="${s.photo.page}" target="_blank" rel="noopener">Wikimedia Commons</a> · <a href="${s.photo.page}" target="_blank" rel="noopener">full size ↗</a></div>
-      </div>
-      <div>
-        <div class="ch-head">
-          <div class="numeral">Stop ${s.rn}</div>
-          <h2>${esc(s.area)}</h2>
-          <div class="dates">${fmt(s.checkIn,{weekday:"long",month:"long",day:"numeric"})} to ${fmt(s.checkOut,{weekday:"long",month:"long",day:"numeric"})} · ${n} night${n > 1 ? "s" : ""}</div>
-          ${DRIVES[s.id] ? `<div style="color:var(--muted);font-size:16px;margin-top:6px">🚗 ${DRIVES[s.id]}</div>` : ""}
-        </div>
-        <div class="stay-box">
-          <div class="sc" style="color:var(--muted);font-size:11px;margin-bottom:4px">Where we sleep</div>
-          <h3>${esc(s.name)}</h3>
-          <dl>
-            <dt>Host</dt><dd>${esc(s.host)}</dd>
-            <dt>Check in</dt><dd>${short(s.checkIn)}, from ${s.inTime}</dd>
-            <dt>Check out</dt><dd>${short(s.checkOut)}, by ${s.outTime}</dd>
-            <dt>Address</dt><dd>${esc(s.address)}</dd>
-          </dl>
-          <div class="note">${esc(s.note)}</div>
-          ${s.flag ? `<div class="flag">${esc(s.flag)}</div>` : ""}
-          <div class="wxline" id="wxline-${s.id}">${CLIMATE[s.id]}</div>
-          <div class="btns" style="margin-top:12px">
-            <a class="btn solid" href="${gdir(s.nav)}" target="_blank" rel="noopener">Directions</a>
-            <a class="btn" href="${waze(s.nav)}" target="_blank" rel="noopener">Waze</a>
-            <a class="btn" href="${s.airbnb || "https://www.airbnb.com/trips"}" target="_blank" rel="noopener">Airbnb</a>
-            <button class="btn" data-openmap="${s.id}">Map</button>
-            <button class="btn" data-save="stop-${s.id}">Save card</button>
-          </div>
-        </div>
-        <div class="cols">
-          <div>
-            <div class="listhead"><h3>Dine</h3><span class="sc">gluten-free friendly</span></div>
-            <ul class="items">${s.dine.map(p => `<li><a href="${gplace(p.n, s)}" target="_blank" rel="noopener"><span class="nm">${esc(p.n)}</span><span class="tag">${esc(p.t)}</span><span class="ds">${esc(p.d)}</span></a></li>`).join("")}</ul>
-          </div>
-          <div>
-            <div class="listhead"><h3>Do</h3><span class="sc">what people love here</span></div>
-            <ul class="items">${s.todo.map(p => `<li><a href="${gplace(p.n, s)}" target="_blank" rel="noopener"><span class="nm">${esc(p.n)}</span><span class="ds">${esc(p.d)}</span></a></li>`).join("")}</ul>
-          </div>
-        </div>
-        <div class="essentials">
-          <div class="sc" style="color:var(--muted);font-size:11px">Nearest to the stay, live on Google Maps</div>
-          <div class="btns">${ESSENTIALS.map(([i,l,q]) => `<a class="ess" href="${gsearch(q, s.lat, s.lng)}" target="_blank" rel="noopener">${i} ${l}</a>`).join("")}</div>
-        </div>
-      </div>
-    </div></div>
-  </section>`;
-}).join("");
-
-/* ===== DASHBOARD panes ===== */
-let activeTab = store.get("cr-tab") || "plan";
-const stopsInView = () => activeStop ? STAYS.filter(s => s.id === activeStop) : STAYS;
-const grp = s => `<h3 class="grp" style="--accent:${s.c}"><i>${s.rn}</i>${esc(s.area)}</h3>`;
+/* ===== dashboard side ===== */
 const WXDATA = {};
 const WXI = c => c===0?"☀️":c<=2?"🌤️":c===3?"☁️":c<=48?"🌫️":c<=57?"🌦️":c<=67?"🌧️":c<=82?"🌦️":"⛈️";
-
-function renderPane(){
-  $$("#tabs button").forEach(b => b.setAttribute("aria-pressed", b.dataset.tab === activeTab));
-  const P = $("#pane");
-  if (activeTab === "plan"){
-    P.innerHTML = stopsInView().map(s => {
-      const days = DAYS.filter(d => d.stay === s.id);
-      return grp(s) + `<div class="mini" style="--accent:${s.c}"><h4>${esc(s.name)}</h4>
-        <dl><dt>Host</dt><dd>${esc(s.host)}</dd><dt>In</dt><dd>${short(s.checkIn)}, ${s.inTime}</dd><dt>Out</dt><dd>${short(s.checkOut)}, ${s.outTime}</dd><dt>Address</dt><dd>${esc(s.address)}</dd></dl>
-        ${s.flag ? `<div class="flag">${esc(s.flag)}</div>` : ""}
-        <div class="btns"><a class="btn solid" href="${gdir(s.nav)}" target="_blank" rel="noopener">Directions</a><a class="btn soft" href="${s.airbnb || "https://www.airbnb.com/trips"}" target="_blank" rel="noopener">Airbnb</a><button class="btn soft" data-save="stop-${s.id}">Save card</button></div></div>` +
-        days.map(d => `<div class="daycard${d.date === today ? " today" : ""}" style="--accent:${s.c}"><span class="sc">Day ${DAYS.indexOf(d) + 1} · ${short(d.date)}</span><h4>${esc(d.title)}</h4><ul>${d.items.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>`).join("");
-    }).join("") + (activeStop ? "" : `<div class="btns" style="margin-top:14px"><button class="btn solid" data-save="itinerary">Save itinerary image</button></div>`);
-  }
-  if (activeTab === "dine"){
-    P.innerHTML = `<p style="margin:0 0 6px;color:var(--muted);font-size:16px">Gluten-free friendly, from celiac review sites. Tap for live reviews.</p>` +
-      stopsInView().map(s => grp(s) + `<ul class="items">${s.dine.map(p => `<li><a href="${gplace(p.n, s)}" target="_blank" rel="noopener"><span class="nm">${esc(p.n)}</span><span class="tag">${esc(p.t)}</span><span class="ds">${esc(p.d)}</span></a></li>`).join("")}</ul>`).join("") +
-      `<div class="btns" style="margin-top:16px"><button class="btn solid" data-save="gf">Save Spanish gluten-free card</button></div>`;
-  }
-  if (activeTab === "do"){
-    P.innerHTML = stopsInView().map(s => grp(s) + `<ul class="items">${s.todo.map(p => `<li><a href="${gplace(p.n, s)}" target="_blank" rel="noopener"><span class="nm">${p.i ? p.i + " " : ""}${esc(p.n)}</span><span class="ds">${esc(p.d)}</span></a></li>`).join("")}</ul>
-      <div class="btns" style="margin:10px 0 4px">${ESSENTIALS.map(([i,l,q]) => `<a class="ess" href="${gsearch(q, s.lat, s.lng)}" target="_blank" rel="noopener">${i} ${l}</a>`).join("")}</div>`).join("");
-  }
-  if (activeTab === "weather"){
-    P.innerHTML = stopsInView().map(s => grp(s) + `<div style="color:var(--muted);font-size:15.5px;margin-bottom:4px">November normal: ${CLIMATE[s.id]}</div>` +
-      (WXDATA[s.id] ? (WXDATA[s.id].length ? WXDATA[s.id].map(r => `<div class="wxrow"><span>${short(r.t)}</span><span class="e">${WXI(r.c)}</span><span><b>${Math.round(r.hi)}°</b> / ${Math.round(r.lo)}°F</span><span class="rain">💧${r.p ?? "–"}%</span></div>`).join("") : `<div style="font-size:15px">Forecast appears about two weeks out.</div>`) : `<div style="font-size:15px">Loading forecast…</div>`)).join("");
-  }
-  if (activeTab === "notes"){
-    P.innerHTML = stopsInView().map(s => grp(s) + `<textarea data-note="${s.id}" placeholder="Door code, wifi, what we loved...">${esc(store.get("cr-note-" + s.id))}</textarea>`).join("") +
-      `<p style="color:var(--muted);font-size:14.5px">Notes stay on this device only.</p>`;
-    $$("#pane textarea").forEach(t => t.addEventListener("input", () => store.set("cr-note-" + t.dataset.note, t.value)));
-  }
+const itemRow = (p, s) => `<li><div class="txt"><span class="nm">${p.i ? p.i + " " : ""}${esc(p.n)}</span>${p.t ? `<span class="tag">${esc(p.t)}</span>` : ""}<span class="ds">${esc(p.d)}</span></div><button class="how" data-how="${esc(p.n)}"${p.lat ? ` data-lat="${p.lat}" data-lng="${p.lng}"` : ""}>How far</button></li>`;
+function wxHtml(s){
+  const rows = WXDATA[s.id];
+  return `<div class="muted" style="font-size:15.5px;margin-bottom:4px">November normal: ${CLIMATE[s.id]}</div>` +
+    (rows ? (rows.length ? rows.map(r => `<div class="wxrow"><span>${short(r.t)}</span><span>${WXI(r.c)}</span><span><b>${Math.round(r.hi)}°</b> / ${Math.round(r.lo)}°F</span><span class="rain">💧${r.p ?? "–"}%</span></div>`).join("") : `<div style="font-size:15px">Forecast appears about two weeks out.</div>`) : `<div style="font-size:15px">Loading forecast…</div>`);
 }
-$("#tabs").addEventListener("click", e => {
-  const b = e.target.closest("button"); if (!b) return;
-  activeTab = b.dataset.tab; store.set("cr-tab", activeTab); renderPane();
-  if (document.body.classList.contains("d-phone")) $(".side").scrollIntoView({behavior:"smooth"});
+function renderSide(){
+  const s = stay(), side = $("#side");
+  side.style.setProperty("--accent", s.c);
+  const w = wifiGet(s.id);
+  $("#stayCard").innerHTML = `<div class="staycard" style="--accent:${s.c}">
+    <span class="sc">Stop ${s.rn} · ${md(s.checkIn)} to ${md(s.checkOut)} · ${nights(s)} night${nights(s) > 1 ? "s" : ""}</span>
+    <h3>${esc(s.name)}</h3>
+    <dl class="kv"><dt>Host</dt><dd>${esc(s.host)}</dd><dt>Check in</dt><dd>${short(s.checkIn)}, from ${s.inTime}</dd><dt>Check out</dt><dd>${short(s.checkOut)}, by ${s.outTime}</dd><dt>Address</dt><dd>${esc(s.address)}</dd>${w.net ? `<dt>Wi-Fi</dt><dd>${esc(w.net)}</dd>` : ""}</dl>
+    ${s.flag ? `<div class="flag">${esc(s.flag)}</div>` : ""}
+    <div class="btns"><a class="btn solid" href="${gdir(s.nav)}" target="_blank" rel="noopener">Directions</a><a class="btn soft" href="${s.airbnb || "https://www.airbnb.com/trips"}" target="_blank" rel="noopener">Airbnb</a><button class="btn soft" data-sheet="wifi">Wi-Fi</button><button class="btn soft" data-save="stop-${s.id}">Save card</button></div>
+  </div>`;
+  const days = DAYS.filter(d => d.stay === s.id);
+  const openKey = "cr-open-" + s.id, open = new Set(store.get(openKey).split(",").filter(Boolean));
+  const acc = (k, title, n, body) => `<details class="acc" data-k="${k}"${open.has(k) ? " open" : ""}><summary>${title} <span class="n">${n}</span></summary><div class="accbody">${body}</div></details>`;
+  $("#accs").innerHTML =
+    acc("plan", "Day plan", `${days.length} day${days.length > 1 ? "s" : ""}`, days.map(d => `<div class="daycard${d.date === today ? " today" : ""}"><span class="sc muted">Day ${DAYS.indexOf(d) + 1} · ${short(d.date)}</span><h4>${esc(d.title)}</h4><ul>${d.items.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>`).join("") + (DRIVES[s.id] ? `<div class="muted" style="font-size:15px">🚗 Getting here: ${DRIVES[s.id]}</div>` : "")) +
+    acc("dine", "Gluten-free dining", `${s.dine.length} places`, `<ul class="items">${s.dine.map(p => itemRow(p, s)).join("")}</ul>`) +
+    acc("do", "Things to do", `${s.todo.length} ideas`, `<ul class="items">${s.todo.map(p => itemRow(p, s)).join("")}</ul>`) +
+    acc("wx", "Weather", "forecast", wxHtml(s)) +
+    acc("notes", "Notes", "this device", `<textarea data-note="${s.id}" placeholder="Door code, parking, anything to remember...">${esc(store.get("cr-note-" + s.id))}</textarea>`);
+  $$("#accs details").forEach(d => d.addEventListener("toggle", () => {
+    const o = $$("#accs details[open]").map(x => x.dataset.k); store.set(openKey, o.join(","));
+  }));
+  const t = $("#accs textarea"); if (t) t.addEventListener("input", () => store.set("cr-note-" + t.dataset.note, t.value));
+}
+document.addEventListener("click", e => {
+  const h = e.target.closest("[data-how]"); if (!h) return;
+  const sid = h.closest("[data-sid]") ? +h.closest("[data-sid]").dataset.sid : activeStop;
+  if (sid !== activeStop) setStop(sid, false);
+  if (state.view !== "dashboard") openOverlay(sid);
+  if (h.dataset.lat) measure({lat:+h.dataset.lat, lng:+h.dataset.lng, name:h.dataset.how});
+  else findAndMeasure(h.dataset.how);
+  if (state.view === "dashboard") $(".tool").scrollIntoView({behavior:"smooth", block:"start"});
 });
 
-/* ===== weather (Open-Meteo, free, no key) ===== */
+/* ===== simple view ===== */
+$("#doors").innerHTML = STAYS.map(s => `<a class="door" href="#ch-${s.id}"><div class="num" style="color:${s.c}">${s.rn}</div><h3>${esc(s.short)}</h3><small>${md(s.checkIn)} to ${md(s.checkOut)}</small><small>${nights(s)} night${nights(s) > 1 ? "s" : ""}</small></a>`).join("");
+$("#chapters").innerHTML = STAYS.map(s => `<section class="chapter" id="ch-${s.id}" data-sid="${s.id}" style="--accent:${s.c}">
+  <div class="wrap"><div class="ch-grid">
+    <div class="ch-photo"><div class="doorway"><img loading="lazy" src="${s.photo.src}" alt="${esc(s.photo.alt)}"></div>
+      <div class="credit">Photo: <a href="${s.photo.page}" target="_blank" rel="noopener">Wikimedia Commons</a></div></div>
+    <div>
+      <div class="ch-head"><div class="numeral">Stop ${s.rn}</div><h2>${esc(s.area)}</h2>
+        <div class="dates">${fmt(s.checkIn,{weekday:"long",month:"long",day:"numeric"})} to ${fmt(s.checkOut,{weekday:"long",month:"long",day:"numeric"})} · ${nights(s)} night${nights(s) > 1 ? "s" : ""}</div>
+        ${DRIVES[s.id] ? `<div class="muted" style="font-size:16px;margin-top:6px">🚗 ${DRIVES[s.id]}</div>` : ""}</div>
+      <div class="stay-box">
+        <div class="sc muted" style="font-size:11px;margin-bottom:4px">Stay</div>
+        <h3>${esc(s.name)}</h3>
+        <dl class="kv"><dt>Host</dt><dd>${esc(s.host)}</dd><dt>Check in</dt><dd>${short(s.checkIn)}, from ${s.inTime}</dd><dt>Check out</dt><dd>${short(s.checkOut)}, by ${s.outTime}</dd><dt>Address</dt><dd>${esc(s.address)}</dd></dl>
+        <div style="font-size:16px;margin-bottom:8px">${esc(s.note)}</div>
+        ${s.flag ? `<div class="flag">${esc(s.flag)}</div>` : ""}
+        <div class="wxline" id="wxline-${s.id}">${CLIMATE[s.id]}</div>
+        <div class="btns"><a class="btn solid" href="${gdir(s.nav)}" target="_blank" rel="noopener">Directions</a><a class="btn" href="${waze(s.nav)}" target="_blank" rel="noopener">Waze</a><a class="btn" href="${s.airbnb || "https://www.airbnb.com/trips"}" target="_blank" rel="noopener">Airbnb</a><button class="btn" data-openmap="${s.id}">Map</button><button class="btn" data-save="stop-${s.id}">Save card</button></div>
+      </div>
+      <details class="acc"><summary>Gluten-free dining <span class="n">${s.dine.length} places</span></summary><div class="accbody"><ul class="items">${s.dine.map(p => itemRow(p, s)).join("")}</ul></div></details>
+      <details class="acc"><summary>Things to do <span class="n">${s.todo.length} ideas</span></summary><div class="accbody"><ul class="items">${s.todo.map(p => itemRow(p, s)).join("")}</ul></div></details>
+    </div>
+  </div></div></section>`).join("");
+
+/* map overlay (simple view) */
+function openOverlay(id){
+  $("#mapOverlay").classList.remove("hidden"); document.body.style.overflow = "hidden";
+  setTimeout(() => { map.invalidateSize(); if (id){ if (id !== activeStop) setStop(id); else goStop(id); } else map.fitBounds(wholeTrip()); }, 60);
+}
+function closeOverlay(){ $("#mapOverlay").classList.add("hidden"); document.body.style.overflow = ""; }
+$("#closeMap").onclick = closeOverlay;
+document.addEventListener("click", e => { const b = e.target.closest("[data-openmap]"); if (b) openOverlay(+b.dataset.openmap); });
+
+/* ===== sheets ===== */
+function openSheet(k){
+  const S = SHEETS[k];
+  $("#sheetPanel").innerHTML = `<button class="btn soft close" id="sheetClose">Close</button><div class="head"><h2>${S.title}</h2><div class="sub">${S.sub}</div></div>${S.html()}`;
+  $("#sheet").classList.remove("hidden"); $("#sheetPanel").scrollTop = 0;
+  $("#sheetClose").onclick = closeSheet;
+  $$("#sheetPanel [data-wifi]").forEach(inp => inp.addEventListener("input", () => {
+    const w = wifiGet(inp.dataset.wifi); w[inp.dataset.f] = inp.value; store.set("cr-wifi-" + inp.dataset.wifi, JSON.stringify(w));
+  }));
+  $$("#sheetPanel [data-copywifi]").forEach(b => b.onclick = () => {
+    const pw = wifiGet(b.dataset.copywifi).pw || ""; if (navigator.clipboard && pw) navigator.clipboard.writeText(pw);
+    b.textContent = pw ? "Copied" : "Nothing saved"; setTimeout(() => b.textContent = "Copy password", 1200);
+  });
+}
+function closeSheet(){ $("#sheet").classList.add("hidden"); if (state.view === "dashboard") renderSide(); }
+document.addEventListener("click", e => { const b = e.target.closest("[data-sheet]"); if (b) openSheet(b.dataset.sheet); });
+$("#sheet").addEventListener("click", e => { if (e.target.id === "sheet") closeSheet(); });
+
+/* ===== weather ===== */
 STAYS.forEach(async s => {
   try {
     const u = `https://api.open-meteo.com/v1/forecast?latitude=${s.lat}&longitude=${s.lng}&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max&temperature_unit=fahrenheit&timezone=${encodeURIComponent(TZ)}&forecast_days=16`;
     const j = await (await fetch(u)).json();
-    WXDATA[s.id] = j.daily.time.map((t, i) => ({t, c:j.daily.weather_code[i], hi:j.daily.temperature_2m_max[i], lo:j.daily.temperature_2m_min[i], p:j.daily.precipitation_probability_max[i]}))
-      .filter(r => r.t >= s.checkIn && r.t <= s.checkOut);
+    WXDATA[s.id] = j.daily.time.map((t, i) => ({t, c:j.daily.weather_code[i], hi:j.daily.temperature_2m_max[i], lo:j.daily.temperature_2m_min[i], p:j.daily.precipitation_probability_max[i]})).filter(r => r.t >= s.checkIn && r.t <= s.checkOut);
     const rows = WXDATA[s.id];
     if (rows.length){
-      const his = rows.map(r => Math.round(r.hi)), rain = rows.reduce((a, r) => a + (r.p || 0), 0) / rows.length;
-      const lo = Math.min(...his), hi = Math.max(...his);
+      const his = rows.map(r => Math.round(r.hi)), rain = rows.reduce((a, r) => a + (r.p || 0), 0) / rows.length, lo = Math.min(...his), hi = Math.max(...his);
       $("#wxline-" + s.id).textContent = `Forecast: ${lo === hi ? hi : lo + " to " + hi}°F, ${rain >= 70 ? "showers likely most days" : rain >= 40 ? "some showers" : "mostly dry"}.`;
     }
   } catch(e){ WXDATA[s.id] = []; }
-  if (activeTab === "weather") renderPane();
+  const acc = $('#accs details[data-k="wx"] .accbody');
+  if (acc && s.id === activeStop) acc.innerHTML = wxHtml(s);
 });
 
-/* ===== downloadable image cards (drawn on canvas) ===== */
-async function fontsReady(){
-  try { await Promise.all(['600 60px "Cormorant Garamond"','italic 500 40px "Cormorant Garamond"','400 30px "EB Garamond"','600 30px "EB Garamond"'].map(f => document.fonts.load(f))); } catch(e){}
-}
-function latticeFill(x, w, h, step){
-  x.fillStyle = "#f3efe6"; x.fillRect(0, 0, w, h);
-  x.strokeStyle = "#151a17"; x.lineWidth = 3;
-  for (let i = 0; i <= w; i += step){ x.beginPath(); x.moveTo(i, 0); x.lineTo(i, h); x.stroke(); }
-  for (let j = 0; j <= h; j += step){ x.beginPath(); x.moveTo(0, j); x.lineTo(w, j); x.stroke(); }
-}
-function archPath(x, ax, ay, aw, ah){
-  const r = aw / 2;
-  x.beginPath(); x.moveTo(ax, ay + ah); x.lineTo(ax, ay + r); x.arc(ax + r, ay + r, r, Math.PI, 0); x.lineTo(ax + aw, ay + ah); x.closePath();
-}
+/* ===== saveable image cards ===== */
+async function fontsReady(){ try { await Promise.all(['600 60px "Cormorant Garamond"','italic 500 40px "Cormorant Garamond"','400 30px "EB Garamond"','600 30px "EB Garamond"'].map(f => document.fonts.load(f))); } catch(e){} }
+function archPath(x, ax, ay, aw, ah){ const r = aw / 2; x.beginPath(); x.moveTo(ax, ay + ah); x.lineTo(ax, ay + r); x.arc(ax + r, ay + r, r, Math.PI, 0); x.lineTo(ax + aw, ay + ah); x.closePath(); }
 function frame(w, h){
-  const c = document.createElement("canvas"); c.width = w; c.height = h;
-  const x = c.getContext("2d");
-  latticeFill(x, w, h, 40);
-  const m = 70;
-  archPath(x, m, m, w - 2 * m, h - 2 * m);
-  x.fillStyle = "#fbf9f4"; x.fill(); x.lineWidth = 5; x.strokeStyle = "#151a17"; x.stroke();
-  archPath(x, m + 18, m + 18, w - 2 * m - 36, h - 2 * m - 36);
-  x.lineWidth = 1.5; x.strokeStyle = "#c8963c"; x.stroke();
-  x.textAlign = "center"; x.textBaseline = "alphabetic";
+  const c = document.createElement("canvas"); c.width = w; c.height = h; const x = c.getContext("2d");
+  x.fillStyle = "#f3efe6"; x.fillRect(0, 0, w, h); x.strokeStyle = "#151a17"; x.lineWidth = 3;
+  for (let i = 0; i <= w; i += 40){ x.beginPath(); x.moveTo(i, 0); x.lineTo(i, h); x.stroke(); }
+  for (let j = 0; j <= h; j += 40){ x.beginPath(); x.moveTo(0, j); x.lineTo(w, j); x.stroke(); }
+  archPath(x, 70, 70, w - 140, h - 140); x.fillStyle = "#fbf9f4"; x.fill(); x.lineWidth = 5; x.stroke();
+  archPath(x, 88, 88, w - 176, h - 176); x.lineWidth = 1.5; x.strokeStyle = "#c8963c"; x.stroke();
   return {c, x};
 }
-function txt(x, s, px, y, font, color, align){
-  x.font = font; x.fillStyle = color || "#151a17"; x.textAlign = align || "center"; x.fillText(s, px, y);
-}
+function txt(x, s, px, y, font, color, align){ x.font = font; x.fillStyle = color || "#151a17"; x.textAlign = align || "center"; x.fillText(s, px, y); }
 function wrapText(x, s, px, y, maxW, lh, font, color, align){
-  x.font = font; x.fillStyle = color || "#151a17"; x.textAlign = align || "center";
-  const words = s.split(" "); let line = "";
-  for (const w of words){
-    const t = line ? line + " " + w : w;
-    if (x.measureText(t).width > maxW && line){ x.fillText(line, px, y); y += lh; line = w; } else line = t;
-  }
-  if (line){ x.fillText(line, px, y); y += lh; }
-  return y;
+  x.font = font; x.fillStyle = color || "#151a17"; x.textAlign = align || "center"; let line = "";
+  for (const w of s.split(" ")){ const t = line ? line + " " + w : w; if (x.measureText(t).width > maxW && line){ x.fillText(line, px, y); y += lh; line = w; } else line = t; }
+  if (line){ x.fillText(line, px, y); y += lh; } return y;
 }
 const spaced = s => s.toUpperCase().split("").join(String.fromCharCode(8202));
-
 async function drawItinerary(){
-  await fontsReady();
-  const W = 1080, H = 1920, {c, x} = frame(W, H);
+  await fontsReady(); const W = 1080, H = 1920, {c, x} = frame(W, H);
   txt(x, spaced("November 4 to 15, 2026"), W/2, 470, '600 26px "EB Garamond"', "#5f645d");
   txt(x, "Costa Rica", W/2, 580, '600 120px "Cormorant Garamond"');
   txt(x, "five stops, eleven nights", W/2, 640, 'italic 500 42px "Cormorant Garamond"', "#5f645d");
@@ -832,48 +935,33 @@ async function drawItinerary(){
     txt(x, `Host ${s.host} · in ${s.inTime} · out ${s.outTime}`, 260, y + 115, '400 26px "EB Garamond"', "#5f645d", "left");
     y += 205;
   });
-  txt(x, "Pura vida", W/2, H - 130, 'italic 500 44px "Cormorant Garamond"', "#1d4a38");
-  return c;
+  txt(x, "Pura vida", W/2, H - 130, 'italic 500 44px "Cormorant Garamond"', "#1d4a38"); return c;
 }
 async function drawStop(s){
-  await fontsReady();
-  const W = 1080, H = 1500, {c, x} = frame(W, H);
+  await fontsReady(); const W = 1080, H = 1500, {c, x} = frame(W, H);
   txt(x, spaced("Stop " + s.rn), W/2, 420, '600 26px "EB Garamond"', s.c);
   txt(x, s.area, W/2, 510, '600 92px "Cormorant Garamond"');
   txt(x, `${short(s.checkIn)} to ${short(s.checkOut)} · ${nights(s)} night${nights(s) > 1 ? "s" : ""}`, W/2, 565, 'italic 500 38px "Cormorant Garamond"', "#5f645d");
   x.fillStyle = s.c; x.fillRect(W/2 - 60, 600, 120, 3);
   txt(x, s.name, W/2, 670, '600 46px "Cormorant Garamond"');
-  let y = wrapText(x, s.address, W/2, 720, 760, 36, '400 28px "EB Garamond"', "#151a17");
-  txt(x, `Host ${s.host} · in ${s.inTime} · out ${s.outTime}`, W/2, y + 8, '500 28px "EB Garamond"', "#5f645d");
-  y += 80;
-  const col = (title, list, cx) => {
-    let yy = y;
-    txt(x, spaced(title), cx, yy, '600 26px "EB Garamond"', s.c, "left"); yy += 54;
-    list.slice(0, 6).forEach(p => { yy = wrapText(x, p.n, cx, yy, 320, 38, '500 31px "EB Garamond"', "#151a17", "left") + 16; });
-  };
-  col("Dine", s.dine, 200);
-  col("Do", s.todo, 580);
-  txt(x, "Pura vida", W/2, H - 120, 'italic 500 40px "Cormorant Garamond"', "#1d4a38");
-  return c;
+  let y = wrapText(x, s.address, W/2, 720, 760, 36, '400 28px "EB Garamond"');
+  txt(x, `Host ${s.host} · in ${s.inTime} · out ${s.outTime}`, W/2, y + 8, '500 28px "EB Garamond"', "#5f645d"); y += 80;
+  const col = (title, list, cx) => { let yy = y; txt(x, spaced(title), cx, yy, '600 26px "EB Garamond"', s.c, "left"); yy += 54;
+    list.slice(0, 6).forEach(p => { yy = wrapText(x, p.n, cx, yy, 320, 38, '500 31px "EB Garamond"', "#151a17", "left") + 16; }); };
+  col("Dine", s.dine, 200); col("Do", s.todo, 580);
+  txt(x, "Pura vida", W/2, H - 120, 'italic 500 40px "Cormorant Garamond"', "#1d4a38"); return c;
 }
 async function drawGF(){
-  await fontsReady();
-  const W = 1080, H = 1500, {c, x} = frame(W, H);
+  await fontsReady(); const W = 1080, H = 1500, {c, x} = frame(W, H);
   txt(x, spaced("Para el mesero"), W/2, 420, '600 26px "EB Garamond"', "#2d4fa0");
   txt(x, "Sin gluten,", W/2, 520, '600 96px "Cormorant Garamond"');
   txt(x, "por favor", W/2, 610, 'italic 600 96px "Cormorant Garamond"', "#1d4a38");
   let y = 700;
-  const es = [
-    "No puedo comer gluten: nada de trigo, cebada, centeno ni avena.",
-    "Por favor, sin harina, sin empanizar y sin salsa de soya.",
-    "Necesito que se cocine aparte: no en la misma freidora ni en la misma plancha.",
-    "¿Qué platos me recomienda que sean sin gluten?"
-  ];
-  es.forEach(s => { y = wrapText(x, s, W/2, y, 760, 46, '500 36px "EB Garamond"', "#151a17") + 18; });
+  ["No puedo comer gluten: nada de trigo, cebada, centeno ni avena.","Por favor, sin harina, sin empanizar y sin salsa de soya.","Necesito que se cocine aparte: no en la misma freidora ni en la misma plancha.","¿Qué platos me recomienda que sean sin gluten?"]
+    .forEach(s => { y = wrapText(x, s, W/2, y, 760, 46, '500 36px "EB Garamond"') + 18; });
   y += 10; x.fillStyle = "#c8963c"; x.fillRect(W/2 - 60, y, 120, 3); y += 54;
-  y = wrapText(x, "I can't eat gluten (wheat, barley, rye, oats). No flour, breading or soy sauce. Please cook it separately, not in a shared fryer or on a shared grill. What do you recommend?", W/2, y, 760, 36, 'italic 400 28px "EB Garamond"', "#5f645d");
-  txt(x, "¡Muchas gracias!", W/2, H - 130, 'italic 600 46px "Cormorant Garamond"', "#1d4a38");
-  return c;
+  wrapText(x, "I can't eat gluten (wheat, barley, rye, oats). No flour, breading or soy sauce. Please cook it separately, not in a shared fryer or on a shared grill. What do you recommend?", W/2, y, 760, 36, 'italic 400 28px "EB Garamond"', "#5f645d");
+  txt(x, "¡Muchas gracias!", W/2, H - 130, 'italic 600 46px "Cormorant Garamond"', "#1d4a38"); return c;
 }
 document.addEventListener("click", async e => {
   const b = e.target.closest("[data-save]"); if (!b) return;
@@ -881,22 +969,18 @@ document.addEventListener("click", async e => {
   let c, name;
   if (k === "itinerary"){ c = await drawItinerary(); name = "costa-rica-itinerary.png"; }
   else if (k === "gf"){ c = await drawGF(); name = "sin-gluten-card.png"; }
-  else { const s = STAYS.find(x => x.id === +k.split("-")[1]); c = await drawStop(s); name = `costa-rica-stop-${s.id}-${s.short.toLowerCase().replace(/\s+/g,"-")}.png`; }
+  else { const s = STAYS.find(x => x.id === +k.split("-")[1]); c = await drawStop(s); name = `costa-rica-stop-${s.id}.png`; }
   b.textContent = label;
-  c.toBlob(blob => {
-    const url = URL.createObjectURL(blob);
-    $("#imgOut").src = url; $("#imgDl").href = url; $("#imgDl").download = name;
-    $("#imgModal").classList.remove("hidden");
-  }, "image/png");
+  c.toBlob(blob => { const url = URL.createObjectURL(blob); $("#imgOut").src = url; $("#imgDl").href = url; $("#imgDl").download = name; $("#imgModal").classList.remove("hidden"); }, "image/png");
 });
 $("#imgClose").onclick = () => $("#imgModal").classList.add("hidden");
 $("#imgModal").addEventListener("click", e => { if (e.target.id === "imgModal") $("#imgModal").classList.add("hidden"); });
 
 /* ===== start ===== */
-const cs = currentStay();
-if (cs) activeStop = 0;
-renderPane();
-if (state.view && state.device) applyView(); else { state.view = state.view || "simple"; state.device = state.device || guessDevice(); applyView(); showGate(); }
+setStop(activeStop, false);
+if (state.view && state.device) applyView();
+else { state.view = state.view || "dashboard"; state.device = state.device || guessDevice(); applyView(); showGate(); }
+addEventListener("resize", () => document.documentElement.style.setProperty("--hdr", $("header.top").offsetHeight + "px"));
 </script>
 </body>
 </html>
